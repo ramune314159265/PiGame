@@ -123,6 +123,11 @@ body {
 }
 
 button.gameMode {
+    height: 3rem;
+    font-size: 16px;
+    background: var(--background-primary);
+    box-shadow: var(--shadow);
+    border: none;
     border-radius: var(--border-radius);
 }
 
@@ -130,4 +135,6 @@ select#numberSelector {
     padding: 16px;
     font-size: 16px;
     border-radius: var(--border-radius);
+    border: none;
+    box-shadow: var(--shadow);
 }
