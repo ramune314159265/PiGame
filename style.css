@@ -83,6 +83,13 @@ button {
     user-select: none;
 }
 
+button.button{
+    background: var(--background-primary);
+    box-shadow: var(--shadow);
+    border: none;
+    border-radius: var(--border-radius);
+}
+
 body {
     width: 100vw;
     height: 100vh;
@@ -125,10 +132,6 @@ body {
 button.gameMode {
     height: 3rem;
     font-size: 16px;
-    background: var(--background-primary);
-    box-shadow: var(--shadow);
-    border: none;
-    border-radius: var(--border-radius);
 }
 
 select#numberSelector {
@@ -188,8 +191,4 @@ button.back {
 button.key {
     height: 4rem;
     font-size: 20px;
-    background: var(--background-primary);
-    box-shadow: var(--shadow);
-    border: none;
-    border-radius: var(--border-radius);
 }
