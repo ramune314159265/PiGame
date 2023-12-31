@@ -147,3 +147,8 @@ select#numberSelector {
     top: 0;
     left: 0;
 }
+
+.popup {
+    display: flex;
+    flex-direction: column;
+}
