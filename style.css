@@ -14,21 +14,18 @@
     --green: #58b058;
     --blue: #5395ee;
     --red: #df3939;
-    --safe-area-top: env(safe-area-inset-top, 0px);
     --light-background-primary: #ffffff;
     --light-background-secondary: #f4f4f4;
     --light-accent-color: #58b058;
     --light-background-color: #3a3a3a74;
     --light-text-color: black;
     --light-text-opposite-color: white;
-    --light-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     --dark-background-primary: #161616;
     --dark-background-secondary: #2a2a2a;
     --dark-accent-color: #005a2c;
     --dark-background-color: #000000b0;
     --dark-text-color: white;
     --dark-text-opposite-color: black;
-    --dark-shadow: rgba(14, 30, 37, 0.12) 0px 4px 6px -1px, rgba(14, 30, 37, 0.32) 0px 2px 4px -1px;
 }
 
 [data-theme="light"] {
@@ -38,7 +35,6 @@
     --background-color: var(--light-background-color);
     --text-color: var(--light-text-color);
     --text-opposite-color: var(--light-text-opposite-color);
-    --shadow: var(--light-shadow);
 }
 
 [data-theme="dark"] {
@@ -48,7 +44,6 @@
     --background-color: var(--dark-background-color);
     --text-color: var(--dark-text-color);
     --text-opposite-color: var(--dark-text-opposite-color);
-    --shadow: var(--dark-shadow);
 }
 
 body {
