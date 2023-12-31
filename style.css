@@ -140,7 +140,9 @@ select#numberSelector {
 }
 
 .popup{
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    background: var(--background-secondary);
     position: absolute;
     top: 0;
     left: 0;
