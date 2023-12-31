@@ -138,3 +138,10 @@ select#numberSelector {
     border: none;
     box-shadow: var(--shadow);
 }
+
+.popup{
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
