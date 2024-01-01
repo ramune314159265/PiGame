@@ -36,7 +36,7 @@
     --border-radius: 8px;
     --black: #000000;
     --white: #ffffff;
-    --darkgrey: grey;
+    --gray: gray;
     --green: #58b058;
     --blue: #5395ee;
     --red: #df3939;
@@ -204,6 +204,10 @@ button.back {
     flex-grow: 1;
     overflow-y: auto;
     overflow-wrap: break-word;
+}
+
+.complement {
+    color: var(--gray);
 }
 
 .keyboard {
