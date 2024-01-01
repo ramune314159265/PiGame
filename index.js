@@ -27,6 +27,9 @@ class KeyboardUI extends EventRegister {
             })
         })
     }
+    getKeyElement(number){
+        return this.component.querySelector(`[data-key=${number}]`)
+    }
 }
 
 class OutputUI {
@@ -67,7 +70,7 @@ class PIGameBase {
         document.body.appendChild(this.UI.component)
     }
     getDigitNumber(digit = this.digit) {
-        return numericalSequence[digit]
+        return this.numericalSequence[digit]
     }
 }
 
@@ -80,9 +83,12 @@ class PracticeMode extends PIGameBase {
                 case Number.isNaN(parseInt(number)):
 
                     break;
-
                 default:
-                    this.UI.output.addToOutput(number)
+                    if (this.getDigitNumber() === number) {
+                        this.UI.output.addToOutput(number)
+                        this.digit++
+                    }
+
                     break;
             }
         })
