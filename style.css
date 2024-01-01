@@ -199,7 +199,7 @@ button.back {
     color: var(--blue);
 }
 
-.inputField {
+.outputField {
     width: 100%;
     font-size: 32px;
     flex-grow: 1;
