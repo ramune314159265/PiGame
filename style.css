@@ -172,6 +172,7 @@ select#numberSelector {
     padding: 0px 12px 36px 12px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 8px;
     background: var(--background-secondary);
     position: absolute;
@@ -180,6 +181,7 @@ select#numberSelector {
 }
 
 .sessionHeader {
+    width: 100%;
     height: 3rem;
     display: flex;
     align-items: center;
@@ -198,11 +200,13 @@ button.back {
 }
 
 .inputField {
+    width: 100%;
     font-size: 32px;
     flex-grow: 1;
 }
 
 .keyboard {
+    width: 350px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
