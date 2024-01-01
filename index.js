@@ -7,3 +7,9 @@ class PIGameBase {
         return numericalSequence[digit]
     }
 }
+
+class PracticeMode extends PIGameBase{
+    constructor(numericalSequence){
+        super(numericalSequence);
+    }
+}
