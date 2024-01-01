@@ -9,6 +9,30 @@
 </head>
 
 <body data-theme="light">
+    <div id="templates">
+        <template id="GameMainUI">
+            <div class="sessionHeader">
+                <button type="button" class="letterButton back">戻る</button>
+                <div class="sessionTitle"></div>
+            </div>
+            <div class="inputField"></div>
+            <div class="keyboard"></div>
+        </template>
+        <template id="calcKeyboard">
+            <button type="button" class="button key" data-number="1">1</button>
+            <button type="button" class="button key" data-number="2">2</button>
+            <button type="button" class="button key" data-number="3">3</button>
+            <button type="button" class="button key" data-number="4">4</button>
+            <button type="button" class="button key" data-number="5">5</button>
+            <button type="button" class="button key" data-number="6">6</button>
+            <button type="button" class="button key" data-number="7">7</button>
+            <button type="button" class="button key" data-number="8">8</button>
+            <button type="button" class="button key" data-number="9">9</button>
+            <div></div>
+            <button type="button" class="button key" data-number="0">0</button>
+            <div></div>
+        </template>
+    </div>
     <div class="main">
         <div class="title">
             <div class="symbol">π</div>
@@ -26,28 +50,6 @@
             </div>
         </div>
     </div>
-    <div class="popup">
-        <div class="sessionHeader">
-            <button type="button" class="letterButton back">戻る</button>
-            <div class="sessionTitle"></div>
-        </div>
-        <div class="inputField"></div>
-        <div class="keyboard">
-            <button type="button" class="button key" data-number="1">1</button>
-            <button type="button" class="button key" data-number="2">2</button>
-            <button type="button" class="button key" data-number="3">3</button>
-            <button type="button" class="button key" data-number="4">4</button>
-            <button type="button" class="button key" data-number="5">5</button>
-            <button type="button" class="button key" data-number="6">6</button>
-            <button type="button" class="button key" data-number="7">7</button>
-            <button type="button" class="button key" data-number="8">8</button>
-            <button type="button" class="button key" data-number="9">9</button>
-            <div></div>
-            <button type="button" class="button key" data-number="0">0</button>
-            <div></div>
-        </div>
-    </div>
-
     <script src="index.js"></script>
 </body>
 

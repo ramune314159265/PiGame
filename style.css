@@ -166,7 +166,7 @@ select#numberSelector {
     box-shadow: var(--shadow);
 }
 
-.popup {
+.gameMain {
     width: 100vw;
     height: 100vh;
     padding: 0px 12px 36px 12px;
