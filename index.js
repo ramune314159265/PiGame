@@ -16,7 +16,8 @@ class KeyboardUI extends EventRegister {
         const layouts = {
             'calc': document.querySelector('#calcKeyboard')
         }
-        this.component = layouts[layout].content.cloneNode(true);
+        this.component = layouts[layout].content.cloneNode(true)
+
         this.component.childNodes.forEach(node => {
             node.addEventListener('click', e => {
                 if (!e.target.dataset.key) {
@@ -28,10 +29,41 @@ class KeyboardUI extends EventRegister {
     }
 }
 
+class OutputUI {
+    constructor() {
+        this.component = document.querySelector('#output').content.cloneNode(true)
+        this.output = this.component.querySelector('.output')
+        this.complement = this.component.querySelector('.complement')
+    }
+    addToOutput(number) {
+        this.output.textContent += number
+    }
+    setComplement(number = '') {
+        this.complement.textContent = number
+    }
+}
+
+class GameMainUI extends EventRegister {
+    constructor() {
+        super()
+        this.component = document.createElement('div')
+        this.component.classList.add('gameMain')
+        this.component.appendChild(document.querySelector('#gameMainUI').content.cloneNode(true))
+        this.output = new OutputUI()
+        this.keyboard = new KeyboardUI('calc')
+
+        this.component.querySelector('.outputField').appendChild(this.output.component)
+        this.component.querySelector('.keyboard').appendChild(this.keyboard.component)
+    }
+}
+
 class PIGameBase {
     constructor(numericalSequence) {
+        this.UI = new GameMainUI()
         this.numericalSequence = numericalSequence
         this.digit = 0
+
+        document.body.appendChild(this.UI.component)
     }
     getDigitNumber(digit = this.digit) {
         return numericalSequence[digit]
@@ -41,12 +73,18 @@ class PIGameBase {
 class PracticeMode extends PIGameBase {
     constructor(numericalSequence) {
         super(numericalSequence);
+
+        this.UI.keyboard.on('keypress', number => {
+            console.log(number)
+            switch (true) {
+                case Number.isNaN(parseInt(number)):
+
+                    break;
+
+                default:
+                    this.UI.output.addToOutput(number)
+                    break;
+            }
+        })
     }
 }
-
-const test = document.createElement('div')
-test.classList.add('keyboard')
-const keyboardUI = new KeyboardUI('calc')
-test.appendChild(keyboardUI.component)
-document.body.appendChild(test)
-keyboardUI.on('keypress', console.log)
