@@ -76,7 +76,6 @@ class PracticeMode extends PIGameBase {
         super(numericalSequence);
 
         this.UI.keyboard.on('keypress', number => {
-            console.log(number)
             switch (true) {
                 case Number.isNaN(parseInt(number)):
 
