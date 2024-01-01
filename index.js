@@ -37,6 +37,7 @@ class OutputUI {
     }
     addToOutput(number) {
         this.output.textContent += number
+        this.output.scrollIntoView(false)
     }
     setComplement(number = '') {
         this.complement.textContent = number
