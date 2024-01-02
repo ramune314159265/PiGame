@@ -1,7 +1,7 @@
 class EventRegister {
     constructor() { this.events = {} }
     on(name, func) {
-        if (this.events[name] === undefined) this.events[name] = new Array()
+        this.events[name] ??= new Array()
         this.events[name].push(func)
     }
     emit(name, ...arg) {
