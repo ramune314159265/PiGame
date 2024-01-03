@@ -14,7 +14,7 @@ class EventRegister {
     }
 }
 
-class KeyboardUI extends EventRegister {
+class KeyboardComponent extends EventRegister {
     constructor(layout) {
         super()
         const layouts = {
@@ -36,7 +36,7 @@ class KeyboardUI extends EventRegister {
     }
 }
 
-class OutputUI {
+class OutputComponent {
     constructor() {
         this.component = document.querySelector('#output').content.cloneNode(true)
         this.output = this.component.querySelector('.output')
@@ -51,14 +51,14 @@ class OutputUI {
     }
 }
 
-class GameMainUI extends EventRegister {
+class GameMainComponent extends EventRegister {
     constructor() {
         super()
         this.component = document.createElement('div')
         this.component.classList.add('gameMain')
         this.component.appendChild(document.querySelector('#gameMainUI').content.cloneNode(true))
-        this.output = new OutputUI()
-        this.keyboard = new KeyboardUI('calc')
+        this.output = new OutputComponent()
+        this.keyboard = new KeyboardComponent('calc')
 
         this.component.querySelector('.outputField').appendChild(this.output.component)
         this.component.querySelector('.keyboard').appendChild(this.keyboard.component)
@@ -67,7 +67,7 @@ class GameMainUI extends EventRegister {
 
 class PIGameBase {
     constructor(numericalSequence) {
-        this.UI = new GameMainUI()
+        this.UI = new GameMainComponent()
         this.numericalSequence = numericalSequence
         this.digit = 0
 
