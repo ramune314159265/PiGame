@@ -80,20 +80,20 @@ class PIGameBase {
 
 class PracticeMode extends PIGameBase {
     constructor(numericalSequence) {
-        super(numericalSequence);
+        super(numericalSequence)
 
         this.UI.keyboard.on('keypress', number => {
             switch (true) {
                 case Number.isNaN(parseInt(number)):
 
-                    break;
+                    break
                 default:
                     if (this.getDigitNumber() === number) {
                         this.UI.output.addToOutput(number)
                         this.digit++
                     }
 
-                    break;
+                    break
             }
         })
     }
