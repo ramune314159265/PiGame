@@ -1,5 +1,5 @@
 class EventRegister {
-    this.#events = {}
+    #events = {}
     constructor() { }
     on(name, func) {
         this.#events[name] ??= []
