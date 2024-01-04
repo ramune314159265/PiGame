@@ -194,7 +194,7 @@ select#numberSelector {
     height: 100vh;
     padding: 0px 12px 36px 12px;
     display: grid;
-    grid-auto-rows: 3rem 1fr 260px;
+    grid-auto-rows: 3rem 1fr 1fr;
     justify-items: center;
     gap: 8px;
     background: var(--background-secondary);
