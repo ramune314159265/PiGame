@@ -102,9 +102,9 @@ class MemorizeMode extends PIGameBase {
     }
     initDigit() {
         this.UI.keyboard.getKeyElements().forEach(node => {
-            node.classList.remove('correct', 'incorrect')
+            node.classList.remove('correctHint', 'incorrect')
 
-            node.classList.add((node.dataset.key === this.getDigitNumber()) ? 'correct' : 'incorrect')
+            node.classList.add((node.dataset.key === this.getDigitNumber()) ? 'correctHint' : 'incorrect')
         })
 
         this.UI.output.setComplement(this.getDigitNumber(this.digit))
