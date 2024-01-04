@@ -45,7 +45,7 @@ class KeyboardComponent extends EventRegister {
 class OutputComponent {
     constructor() {
         this.component = document.createElement('div')
-        this.component.classList.add('output')
+        this.component.classList.add('outputField')
         this.component.appendChild(document.querySelector('#output').content.cloneNode(true))
         this.output = this.component.querySelector('.output')
         this.complement = this.component.querySelector('.complement')
