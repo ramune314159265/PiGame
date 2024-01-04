@@ -94,12 +94,12 @@ button.button {
 
 button.button:hover,
 button.button.hover {
-    filter: contrast(0.8);
+    filter: brightness(0.8);
 }
 
 button.button:active,
 button.button.active {
-    filter: contrast(0.5);
+    filter: brightness(0.6);
 }
 
 button.correctHint {
