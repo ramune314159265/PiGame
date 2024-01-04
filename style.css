@@ -68,8 +68,8 @@
 }
 
 [data-theme="dark"] {
-    --background-primary: var(--dark-background-primary);
-    --background-secondary: var(--dark-background-secondary);
+    --background-primary: var(--dark-background-secondary);
+    --background-secondary: var(--dark-background-primary);
     --accent-color: var(--dark-accent-color);
     --background-color: var(--dark-background-color);
     --text-color: var(--dark-text-color);
@@ -176,9 +176,12 @@ button.gameMode {
 select#numberSelector {
     padding: 16px;
     font-size: 16px;
+    background: var(--background-primary);
     border-radius: var(--border-radius);
     border: none;
     box-shadow: var(--shadow);
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .gameMain {
