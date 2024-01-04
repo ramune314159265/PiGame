@@ -78,8 +78,21 @@ class PIGameBase {
         this.UI = new GameMainComponent()
         this.numericalSequence = numericalSequence
         this.digit = 0
-
+    }
+    async show() {
         document.body.appendChild(this.UI.component)
+
+        await this.UI.component.animate(
+            [
+                { opacity: 0 },
+                { opacity: 1 }
+            ], {
+            duration: 200, //再生時間（ミリ秒）
+            easing: 'ease-in-out', //イージング
+        }).finished
+    }
+    async hide() {
+        this.UI.remove()
     }
     getDigitNumber(digit = this.digit) {
         return this.numericalSequence[digit]
@@ -110,3 +123,9 @@ class MemorizeMode extends PIGameBase {
         this.UI.output.setComplement(this.getDigitNumber(this.digit))
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('#memorizeMode').addEventListener('click', () => {
+        new MemorizeMode('14159265').show()
+    })
+})
