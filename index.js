@@ -68,6 +68,10 @@ class GameMainComponent extends EventRegister {
         this.output = new OutputComponent()
         this.keyboard = new KeyboardComponent('calc')
 
+        this.component.querySelector('.back').addEventListener('click', () => {
+            this.emit('closeClicked')
+        })
+
         this.component.appendChild(this.output.component)
         this.component.appendChild(this.keyboard.component)
     }
@@ -78,6 +82,10 @@ class PIGameBase {
         this.UI = new GameMainComponent()
         this.numericalSequence = numericalSequence
         this.digit = 0
+
+        this.UI.on('closeClicked', () => {
+            this.hide()
+        })
     }
     async show() {
         document.body.appendChild(this.UI.component)
@@ -87,12 +95,22 @@ class PIGameBase {
                 { opacity: 0 },
                 { opacity: 1 }
             ], {
-            duration: 200, //再生時間（ミリ秒）
-            easing: 'ease-in-out', //イージング
+            duration: 200,
+            easing: 'ease-in-out',
         }).finished
     }
     async hide() {
-        this.UI.remove()
+        await this.UI.component.animate(
+            [
+                { opacity: 1 },
+                { opacity: 0 }
+            ], {
+            duration: 200,
+            easing: 'ease-in-out',
+            fill: 'forwards',
+        }).finished
+
+        this.UI.component.remove()
     }
     getDigitNumber(digit = this.digit) {
         return this.numericalSequence[digit]
