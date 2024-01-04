@@ -6,6 +6,7 @@
     box-sizing: border-box;
     color: var(--text-color);
     stroke: var(--text-color);
+    -webkit-tap-highlight-color: #00000000;
 }
 
 ::-webkit-scrollbar {
@@ -93,7 +94,9 @@ button.button {
 }
 
 button.button:hover,
+button.button:focus-visible,
 button.button.hover {
+    outline: none;
     filter: brightness(0.8);
 }
 
@@ -106,11 +109,13 @@ button.correctHint {
     background: var(--green);
 }
 
-button.correct:active {
+button.correct:active,
+button.correct.active {
     background: var(--green);
 }
 
-button.incorrect:active {
+button.incorrect:active,
+button.incorrect.active {
     background: var(--red);
 }
 

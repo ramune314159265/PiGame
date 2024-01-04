@@ -82,14 +82,13 @@ class PIGameBase {
         this.UI = new GameMainComponent()
         this.numericalSequence = numericalSequence
         this.digit = 0
-
-        this.UI.on('closeClicked', () => {
-            this.hide()
-        })
     }
     async show() {
         document.body.appendChild(this.UI.component)
 
+        this.UI.on('closeClicked', () => {
+            this.hide()
+        })
         await this.UI.component.animate(
             [
                 { opacity: 0 },
@@ -98,6 +97,31 @@ class PIGameBase {
             duration: 200,
             easing: 'ease-in-out',
         }).finished
+
+        this.keyDownEventHandle = e => {
+            if(e.key === 'Escape'){
+                this.hide()
+                return
+            }
+
+            const keyElement = this.UI.keyboard.getKeyElement(e.key)
+            if (!keyElement) {
+                return
+            }
+
+            keyElement.classList.add('active')
+        }
+        this.keyUpEventHandle = e => {
+            const keyElement = this.UI.keyboard.getKeyElement(e.key)
+            if (!keyElement) {
+                return
+            }
+
+            keyElement.click()
+            keyElement.classList.remove('active')
+        }
+        document.addEventListener('keydown', this.keyDownEventHandle)
+        document.addEventListener('keyup', this.keyUpEventHandle)
     }
     async hide() {
         await this.UI.component.animate(
@@ -110,6 +134,8 @@ class PIGameBase {
             fill: 'forwards',
         }).finished
 
+        document.removeEventListener('keydown', this.keyDownEventHandle)
+        document.removeEventListener('keyup', this.keyUpEventHandle)
         this.UI.component.remove()
     }
     getDigitNumber(digit = this.digit) {
