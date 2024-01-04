@@ -101,6 +101,14 @@ button.button.active {
     filter: contrast(0.5);
 }
 
+button.correct:active {
+    background: var(--green);
+}
+
+button.incorrect:active {
+    background: var(--red);
+}
+
 button.letterButton {
     font-size: 16px;
     background: none;

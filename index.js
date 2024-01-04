@@ -20,7 +20,9 @@ class KeyboardComponent extends EventRegister {
         const layouts = {
             'calc': document.querySelector('#calcKeyboard')
         }
-        this.component = layouts[layout].content.cloneNode(true)
+        this.component = document.createElement('div')
+        this.component.classList.add('keyboard')
+        this.component.appendChild(layouts[layout].content.cloneNode(true))
 
         this.component.childNodes.forEach(node => {
             if (!node.dataset?.key) {
@@ -32,6 +34,9 @@ class KeyboardComponent extends EventRegister {
             })
         })
     }
+    getKeyElements() {
+        return this.component.querySelectorAll(`[data-key]`)
+    }
     getKeyElement(number) {
         return this.component.querySelector(`[data-key="${number}"]`)
     }
@@ -39,7 +44,9 @@ class KeyboardComponent extends EventRegister {
 
 class OutputComponent {
     constructor() {
-        this.component = document.querySelector('#output').content.cloneNode(true)
+        this.component = document.createElement('div')
+        this.component.classList.add('keyboard')
+        this.component.appendChild(document.querySelector('#output').content.cloneNode(true))
         this.output = this.component.querySelector('.output')
         this.complement = this.component.querySelector('.complement')
     }
@@ -61,8 +68,8 @@ class GameMainComponent extends EventRegister {
         this.output = new OutputComponent()
         this.keyboard = new KeyboardComponent('calc')
 
-        this.component.querySelector('.outputField').appendChild(this.output.component)
-        this.component.querySelector('.keyboard').appendChild(this.keyboard.component)
+        this.component.appendChild(this.output.component)
+        this.component.appendChild(this.keyboard.component)
     }
 }
 
@@ -79,7 +86,7 @@ class PIGameBase {
     }
 }
 
-class PracticeMode extends PIGameBase {
+class MemorizeMode extends PIGameBase {
     constructor(numericalSequence) {
         super(numericalSequence)
 
@@ -87,7 +94,17 @@ class PracticeMode extends PIGameBase {
             if (this.getDigitNumber() === number) {
                 this.UI.output.addToOutput(number)
                 this.digit++
+                this.initDigit()
             }
+        })
+
+        this.initDigit()
+    }
+    initDigit() {
+        this.UI.keyboard.getKeyElements().forEach(node => {
+            node.classList.remove('correct', 'incorrect')
+
+            node.classList.add((node.dataset.key === this.getDigitNumber()) ? 'correct' : 'incorrect')
         })
     }
 }
