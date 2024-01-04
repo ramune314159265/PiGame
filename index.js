@@ -170,6 +170,6 @@ class MemorizeMode extends PIGameBase {
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#memorizeMode').addEventListener('click', () => {
-        new MemorizeMode('14159265').show()
+        new MemorizeMode('14159265358979323846264338327950288419716939937510582097494459230781640628620899862').show()
     })
 })
