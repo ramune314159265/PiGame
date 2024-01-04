@@ -23,10 +23,11 @@ class KeyboardComponent extends EventRegister {
         this.component = layouts[layout].content.cloneNode(true)
 
         this.component.childNodes.forEach(node => {
+            if (!e.target.dataset.key) {
+                return
+            }
+
             node.addEventListener('click', e => {
-                if (!e.target.dataset.key) {
-                    return
-                }
                 this.emit('keypress', e.target.dataset.key)
             })
         })
