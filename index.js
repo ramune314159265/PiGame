@@ -45,7 +45,7 @@ class KeyboardComponent extends EventRegister {
 class OutputComponent {
     constructor() {
         this.component = document.createElement('div')
-        this.component.classList.add('keyboard')
+        this.component.classList.add('output')
         this.component.appendChild(document.querySelector('#output').content.cloneNode(true))
         this.output = this.component.querySelector('.output')
         this.complement = this.component.querySelector('.complement')
@@ -106,5 +106,7 @@ class MemorizeMode extends PIGameBase {
 
             node.classList.add((node.dataset.key === this.getDigitNumber()) ? 'correct' : 'incorrect')
         })
+
+        this.UI.output.setComplement(this.getDigitNumber(this.digit))
     }
 }
