@@ -91,15 +91,17 @@ button.button {
     transition: 0.2s filter;
 }
 
-button.button:hover {
+button.button:hover,
+button.button.hover {
     filter: contrast(0.8);
 }
 
-button.button:active {
+button.button:active,
+button.button.active {
     filter: contrast(0.5);
 }
 
-button.letterButton{
+button.letterButton {
     font-size: 16px;
     background: none;
     border: none;
