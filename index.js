@@ -31,7 +31,7 @@ class KeyboardComponent extends EventRegister {
             })
         })
     }
-    getKeyElement(number){
+    getKeyElement(number) {
         return this.component.querySelector(`[data-key=${number}]`)
     }
 }
@@ -83,17 +83,9 @@ class PracticeMode extends PIGameBase {
         super(numericalSequence)
 
         this.UI.keyboard.on('keypress', number => {
-            switch (true) {
-                case Number.isNaN(parseInt(number)):
-
-                    break
-                default:
-                    if (this.getDigitNumber() === number) {
-                        this.UI.output.addToOutput(number)
-                        this.digit++
-                    }
-
-                    break
+            if (this.getDigitNumber() === number) {
+                this.UI.output.addToOutput(number)
+                this.digit++
             }
         })
     }
