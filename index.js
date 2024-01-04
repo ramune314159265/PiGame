@@ -23,7 +23,7 @@ class KeyboardComponent extends EventRegister {
         this.component = layouts[layout].content.cloneNode(true)
 
         this.component.childNodes.forEach(node => {
-            if (!e.target.dataset.key) {
+            if (!node.dataset?.key) {
                 return
             }
 
@@ -33,7 +33,7 @@ class KeyboardComponent extends EventRegister {
         })
     }
     getKeyElement(number) {
-        return this.component.querySelector(`[data-key=${number}]`)
+        return this.component.querySelector(`[data-key="${number}"]`)
     }
 }
 
