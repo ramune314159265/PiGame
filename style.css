@@ -109,7 +109,7 @@ button.button.active {
 }
 
 button.correctHint {
-    background: var(--green);
+    background: var(--green-highlight);
 }
 
 button.correct:active,
