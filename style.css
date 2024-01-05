@@ -237,14 +237,13 @@ button.back {
 }
 
 .keyboard {
-    width: 350px;
+    width: 400px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 5rem);
     gap: 8px;
 }
 
 button.key {
-    height: 4rem;
     font-size: 20px;
 }
