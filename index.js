@@ -99,7 +99,7 @@ class PIGameBase {
         }).finished
 
         this.keyDownEventHandle = e => {
-            if(e.key === 'Escape'){
+            if (e.key === 'Escape') {
                 this.hide()
                 return
             }
@@ -168,8 +168,41 @@ class MemorizeMode extends PIGameBase {
     }
 }
 
+class PracticeMode extends PIGameBase {
+    constructor(numericalSequence) {
+        super(numericalSequence)
+        this.correctHintTimerId = 0
+
+        this.UI.keyboard.on('keypress', number => {
+            if (this.getDigitNumber() === number) {
+                this.UI.output.addToOutput(number)
+                this.digit++
+                this.initDigit()
+            }
+        })
+
+        this.initDigit()
+    }
+    initDigit() {
+        this.UI.keyboard.getKeyElements().forEach(node => {
+            node.classList.remove('correct', 'correctHint', 'incorrect')
+
+            node.classList.add((node.dataset.key === this.getDigitNumber()) ? 'correct' : 'incorrect')
+        })
+
+        clearTimeout(this.correctHintTimerId)
+        this.correctHintTimerId = setTimeout(() => {
+            console.log('a')
+            this.UI.keyboard.getKeyElement(this.getDigitNumber()).classList.add('correctHint')
+        }, 5000)
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#memorizeMode').addEventListener('click', () => {
         new MemorizeMode('14159265358979323846264338327950288419716939937510582097494459230781640628620899862').show()
+    })
+    document.querySelector('#practiceMode').addEventListener('click', () => {
+        new PracticeMode('14159265358979323846264338327950288419716939937510582097494459230781640628620899862').show()
     })
 })
