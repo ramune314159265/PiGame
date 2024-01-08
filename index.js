@@ -47,6 +47,7 @@ class OutputComponent {
         this.component = document.createElement('div')
         this.component.classList.add('outputField')
         this.component.appendChild(document.querySelector('#output').content.cloneNode(true))
+
         this.output = this.component.querySelector('.output')
         this.complement = this.component.querySelector('.complement')
     }
