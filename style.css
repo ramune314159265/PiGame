@@ -137,6 +137,21 @@ button.letterButton:active {
     filter: grayscale(1);
 }
 
+button.hasSvgIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.svgIcon {
+    height: 100%;
+    aspect-ratio: 1/1;
+    background: var(--text-color);
+    cursor: pointer;
+    mask-repeat: no-repeat;
+    pointer-events: none;
+}
+
 select {
     cursor: pointer;
 }
@@ -241,7 +256,8 @@ numeric-output {
 }
 
 numeric-keyboard {
-    width: 400px;
+    width: 100%;
+    max-width: 500px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 5rem);
