@@ -83,8 +83,8 @@ class KeyboardElement extends HTMLElement {
     getKeyElement(number) {
         return this.querySelector(`[data-key="${number}"]`)
     }
-    hideKeys(keyArray){
-        keyArray.forEach(key=>{
+    hideKeys(keyArray) {
+        keyArray.forEach(key => {
             this.getKeyElement(key).classList.add('hide')
         })
     }
@@ -101,11 +101,15 @@ class OutputElement extends HTMLElement {
         this.output = this.querySelector('.output')
         this.complement = this.querySelector('.complement')
     }
-    connectedCallback(){
+    connectedCallback() {
         this.#setElement()
     }
     addToOutput(number) {
         this.output.textContent += number
+        this.output.scrollIntoView(false)
+    }
+    backspaceOutput() {
+        this.output.textContent = this.output.textContent.slice(0, -1)
         this.output.scrollIntoView(false)
     }
     setComplement(number = '') {
@@ -183,7 +187,7 @@ class MemorizeMode extends PIGameBase {
         super(numericalSequence)
 
         this.UI.on('showed', () => {
-            this.UI.keyboard.hideKeys(['Backspace','Enter'])
+            this.UI.keyboard.hideKeys(['Backspace', 'Enter'])
 
             this.UI.keyboard.addEventListener('keyboardPressed', e => {
                 if (this.getDigitNumber() === e.detail.key) {
@@ -213,7 +217,7 @@ class PracticeMode extends PIGameBase {
         this.correctHintTimerId = 0
 
         this.UI.on('showed', () => {
-            this.UI.keyboard.hideKeys(['Backspace','Enter'])
+            this.UI.keyboard.hideKeys(['Backspace', 'Enter'])
 
             this.UI.keyboard.addEventListener('keyboardPressed', e => {
                 if (this.getDigitNumber() === e.detail.key) {
@@ -246,16 +250,17 @@ class ChallengeMode extends PIGameBase {
     constructor(numericalSequence) {
         super(numericalSequence)
 
-        this.UI.keyboard.on('keypress', number => {
-            this.UI.output.addToOutput(e.detail.key)
-            this.digit++
-            this.initDigit()
+        this.UI.on('showed', () => {
+            this.UI.keyboard.addEventListener('keyboardPressed', e => {
+                if (e.detail.key === 'Backspace') {
+                    this.UI.output.backspaceOutput()
+                    this.digit--
+                    return
+                }
+                this.UI.output.addToOutput(e.detail.key)
+                this.digit++
+            })
         })
-
-        this.initDigit()
-    }
-    initDigit() {
-
     }
 }
 
