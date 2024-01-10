@@ -42,6 +42,76 @@ class KeyboardComponent extends EventRegister {
     }
 }
 
+class KeyboardElement extends HTMLElement {
+    #keyUpEventHandle
+    #keyDownEventHandle
+    constructor() {
+        super()
+    }
+    static get observedAttributes() {
+        return ['layouts'];
+    }
+    #setElement(sourceTemplate) {
+        this.innerHTML = ''
+
+        this.appendChild(sourceTemplate.content.cloneNode(true))
+    }
+    connectedCallback() {
+        this.#setElement(KeyboardElement.layouts[this.getAttribute('layout') ?? 'calc'])
+        this.childNodes.forEach(node => {
+            if (!node.dataset?.key) {
+                return
+            }
+
+            node.addEventListener('click', e => {
+                this.dispatchEvent(new CustomEvent('keyboardPressed', {
+                    detail: {
+                        key: e.target.dataset.key
+                    }
+                }))
+            })
+        })
+
+        this.#keyDownEventHandle = e => {
+            const keyElement = this.getKeyElement(e.key)
+            if (!keyElement) {
+                return
+            }
+
+            keyElement.classList.add('active')
+        }
+        this.#keyUpEventHandle = e => {
+            const keyElement = this.getKeyElement(e.key)
+            if (!keyElement) {
+                return
+            }
+
+            keyElement.click()
+            keyElement.classList.remove('active')
+        }
+
+        document.addEventListener('keydown', this.#keyDownEventHandle)
+        document.addEventListener('keyup', this.#keyUpEventHandle)
+    }
+    disconnectedCallback() {
+        document.removeEventListener('keydown', this.#keyDownEventHandle)
+        document.removeEventListener('keyup', this.#keyUpEventHandle)
+    }
+    attributeChangedCallback(attributeName, oldValue, newValue) {
+        this.#setElement(KeyboardElement.layouts[newValue])
+    }
+
+    static layouts = {
+        'calc': document.querySelector('#calcKeyboard')
+    }
+    getKeyElements() {
+        return this.querySelectorAll(`[data-key]`)
+    }
+    getKeyElement(number) {
+        return this.querySelector(`[data-key="${number}"]`)
+    }
+}
+
 class OutputComponent {
     constructor() {
         this.component = document.createElement('div')
@@ -217,6 +287,8 @@ class ChallengeMode extends PIGameBase {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    customElements.define("numeric-keyboard", KeyboardElement);
+
     document.querySelector('#memorizeMode').addEventListener('click', () => {
         new MemorizeMode('14159265358979323846264338327950288419716939937510582097494459230781640628620899862').show()
     })
