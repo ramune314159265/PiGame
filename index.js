@@ -60,7 +60,7 @@ class OutputComponent {
     }
 }
 
-class GameMainComponent extends EventRegister {
+class GameMainUI extends EventRegister {
     constructor() {
         super()
         this.component = document.createElement('div')
@@ -80,7 +80,7 @@ class GameMainComponent extends EventRegister {
 
 class PIGameBase {
     constructor(numericalSequence) {
-        this.UI = new GameMainComponent()
+        this.UI = new GameMainUI()
         this.numericalSequence = numericalSequence
         this.digit = 0
     }
@@ -212,7 +212,7 @@ class ChallengeMode extends PIGameBase {
         this.initDigit()
     }
     initDigit() {
-        
+
     }
 }
 
