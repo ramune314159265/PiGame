@@ -122,6 +122,10 @@ button.incorrect.active {
     background: var(--red);
 }
 
+button.key.hide {
+    visibility: hidden;
+}
+
 button.letterButton {
     font-size: 16px;
     background: none;
@@ -224,7 +228,7 @@ button.back {
     color: var(--blue);
 }
 
-.outputField {
+numeric-output {
     width: 100%;
     font-size: 32px;
     flex-grow: 1;
@@ -236,7 +240,7 @@ button.back {
     color: var(--lightgray);
 }
 
-.keyboard,numeric-keyboard {
+numeric-keyboard {
     width: 400px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);

@@ -83,16 +83,26 @@ class KeyboardElement extends HTMLElement {
     getKeyElement(number) {
         return this.querySelector(`[data-key="${number}"]`)
     }
+    hideKeys(keyArray){
+        keyArray.forEach(key=>{
+            this.getKeyElement(key).classList.add('hide')
+        })
+    }
 }
 
-class OutputComponent {
+class OutputElement extends HTMLElement {
     constructor() {
-        this.component = document.createElement('div')
-        this.component.classList.add('outputField')
-        this.component.appendChild(document.querySelector('#output').content.cloneNode(true))
+        super()
+    }
+    #setElement(sourceTemplate) {
+        this.innerHTML = ''
 
-        this.output = this.component.querySelector('.output')
-        this.complement = this.component.querySelector('.complement')
+        this.appendChild(document.querySelector('#output').content.cloneNode(true))
+        this.output = this.querySelector('.output')
+        this.complement = this.querySelector('.complement')
+    }
+    connectedCallback(){
+        this.#setElement()
     }
     addToOutput(number) {
         this.output.textContent += number
@@ -109,18 +119,18 @@ class GameMainUI extends EventRegister {
         this.component = document.createElement('div')
         this.component.classList.add('gameMain')
         this.component.appendChild(document.querySelector('#gameMainUI').content.cloneNode(true))
-        this.output = new OutputComponent()
+
+        this.output = this.component.querySelector('.outputField')
         this.keyboard = this.component.querySelector('.keyboard')
-        console.log(this.keyboard)
 
         this.component.querySelector('.back').addEventListener('click', () => {
             this.emit('closeClicked')
         })
-
-        this.component.appendChild(this.output.component)
     }
     async show() {
         document.body.appendChild(this.component)
+        this.emit('showed')
+
         await this.component.animate(
             [
                 { opacity: 0 },
@@ -129,8 +139,6 @@ class GameMainUI extends EventRegister {
             duration: 200,
             easing: 'ease-in-out',
         }).finished
-
-        this.emit('showed')
     }
     async hide() {
         await this.component.animate(
@@ -175,6 +183,8 @@ class MemorizeMode extends PIGameBase {
         super(numericalSequence)
 
         this.UI.on('showed', () => {
+            this.UI.keyboard.hideKeys(['Backspace','Enter'])
+
             this.UI.keyboard.addEventListener('keyboardPressed', e => {
                 if (this.getDigitNumber() === e.detail.key) {
                     this.UI.output.addToOutput(e.detail.key)
@@ -203,6 +213,8 @@ class PracticeMode extends PIGameBase {
         this.correctHintTimerId = 0
 
         this.UI.on('showed', () => {
+            this.UI.keyboard.hideKeys(['Backspace','Enter'])
+
             this.UI.keyboard.addEventListener('keyboardPressed', e => {
                 if (this.getDigitNumber() === e.detail.key) {
                     this.UI.output.addToOutput(e.detail.key)
@@ -249,6 +261,7 @@ class ChallengeMode extends PIGameBase {
 
 document.addEventListener('DOMContentLoaded', () => {
     customElements.define("numeric-keyboard", KeyboardElement);
+    customElements.define("numeric-output", OutputElement);
 
     document.querySelector('#memorizeMode').addEventListener('click', () => {
         new MemorizeMode('14159265358979323846264338327950288419716939937510582097494459230781640628620899862').show()
