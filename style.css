@@ -193,11 +193,14 @@ body {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    align-items: center;
 }
 
 button.gameMode {
-    height: 3rem;
-    font-size: 16px;
+    width: 50%;
+    min-width: 400px;
+    height: 4rem;
+    font-size: 20px;
 }
 
 select#numberSelector {
