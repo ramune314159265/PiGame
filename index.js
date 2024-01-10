@@ -47,6 +47,7 @@ class OutputComponent {
         this.component = document.createElement('div')
         this.component.classList.add('outputField')
         this.component.appendChild(document.querySelector('#output').content.cloneNode(true))
+
         this.output = this.component.querySelector('.output')
         this.complement = this.component.querySelector('.complement')
     }
@@ -198,11 +199,31 @@ class PracticeMode extends PIGameBase {
     }
 }
 
+class ChallengeMode extends PIGameBase {
+    constructor(numericalSequence) {
+        super(numericalSequence)
+
+        this.UI.keyboard.on('keypress', number => {
+            this.UI.output.addToOutput(number)
+            this.digit++
+            this.initDigit()
+        })
+
+        this.initDigit()
+    }
+    initDigit() {
+        
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#memorizeMode').addEventListener('click', () => {
         new MemorizeMode('14159265358979323846264338327950288419716939937510582097494459230781640628620899862').show()
     })
     document.querySelector('#practiceMode').addEventListener('click', () => {
         new PracticeMode('14159265358979323846264338327950288419716939937510582097494459230781640628620899862').show()
+    })
+    document.querySelector('#challengeMode').addEventListener('click', () => {
+        new ChallengeMode('14159265358979323846264338327950288419716939937510582097494459230781640628620899862').show()
     })
 })
