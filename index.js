@@ -14,34 +14,6 @@ class EventRegister {
     }
 }
 
-class KeyboardComponent extends EventRegister {
-    constructor(layout) {
-        super()
-        const layouts = {
-            'calc': document.querySelector('#calcKeyboard')
-        }
-        this.component = document.createElement('div')
-        this.component.classList.add('keyboard')
-        this.component.appendChild(layouts[layout].content.cloneNode(true))
-
-        this.component.childNodes.forEach(node => {
-            if (!node.dataset?.key) {
-                return
-            }
-
-            node.addEventListener('click', e => {
-                this.emit('keypress', e.target.dataset.key)
-            })
-        })
-    }
-    getKeyElements() {
-        return this.component.querySelectorAll(`[data-key]`)
-    }
-    getKeyElement(number) {
-        return this.component.querySelector(`[data-key="${number}"]`)
-    }
-}
-
 class KeyboardElement extends HTMLElement {
     #keyUpEventHandle
     #keyDownEventHandle
@@ -66,7 +38,8 @@ class KeyboardElement extends HTMLElement {
             node.addEventListener('click', e => {
                 this.dispatchEvent(new CustomEvent('keyboardPressed', {
                     detail: {
-                        key: e.target.dataset.key
+                        key: e.target.dataset.key,
+                        element: e.target
                     }
                 }))
             })
@@ -137,14 +110,40 @@ class GameMainUI extends EventRegister {
         this.component.classList.add('gameMain')
         this.component.appendChild(document.querySelector('#gameMainUI').content.cloneNode(true))
         this.output = new OutputComponent()
-        this.keyboard = new KeyboardComponent('calc')
+        this.keyboard = this.component.querySelector('.keyboard')
+        console.log(this.keyboard)
 
         this.component.querySelector('.back').addEventListener('click', () => {
             this.emit('closeClicked')
         })
 
         this.component.appendChild(this.output.component)
-        this.component.appendChild(this.keyboard.component)
+    }
+    async show() {
+        document.body.appendChild(this.component)
+        await this.component.animate(
+            [
+                { opacity: 0 },
+                { opacity: 1 }
+            ], {
+            duration: 200,
+            easing: 'ease-in-out',
+        }).finished
+
+        this.emit('showed')
+    }
+    async hide() {
+        await this.component.animate(
+            [
+                { opacity: 1 },
+                { opacity: 0 }
+            ], {
+            duration: 200,
+            easing: 'ease-in-out',
+            fill: 'forwards',
+        }).finished
+
+        this.component.remove()
     }
 }
 
@@ -155,58 +154,15 @@ class PIGameBase {
         this.digit = 0
     }
     async show() {
-        document.body.appendChild(this.UI.component)
+        await this.UI.show()
 
         this.UI.on('closeClicked', () => {
             this.hide()
         })
-        await this.UI.component.animate(
-            [
-                { opacity: 0 },
-                { opacity: 1 }
-            ], {
-            duration: 200,
-            easing: 'ease-in-out',
-        }).finished
-
-        this.keyDownEventHandle = e => {
-            if (e.key === 'Escape') {
-                this.hide()
-                return
-            }
-
-            const keyElement = this.UI.keyboard.getKeyElement(e.key)
-            if (!keyElement) {
-                return
-            }
-
-            keyElement.classList.add('active')
-        }
-        this.keyUpEventHandle = e => {
-            const keyElement = this.UI.keyboard.getKeyElement(e.key)
-            if (!keyElement) {
-                return
-            }
-
-            keyElement.click()
-            keyElement.classList.remove('active')
-        }
-        document.addEventListener('keydown', this.keyDownEventHandle)
-        document.addEventListener('keyup', this.keyUpEventHandle)
     }
     async hide() {
-        await this.UI.component.animate(
-            [
-                { opacity: 1 },
-                { opacity: 0 }
-            ], {
-            duration: 200,
-            easing: 'ease-in-out',
-            fill: 'forwards',
-        }).finished
+        await this.UI.hide()
 
-        document.removeEventListener('keydown', this.keyDownEventHandle)
-        document.removeEventListener('keyup', this.keyUpEventHandle)
         this.UI.component.remove()
     }
     getDigitNumber(digit = this.digit) {
@@ -218,15 +174,17 @@ class MemorizeMode extends PIGameBase {
     constructor(numericalSequence) {
         super(numericalSequence)
 
-        this.UI.keyboard.on('keypress', number => {
-            if (this.getDigitNumber() === number) {
-                this.UI.output.addToOutput(number)
-                this.digit++
-                this.initDigit()
-            }
-        })
+        this.UI.on('showed', () => {
+            this.UI.keyboard.addEventListener('keyboardPressed', e => {
+                if (this.getDigitNumber() === e.detail.key) {
+                    this.UI.output.addToOutput(e.detail.key)
+                    this.digit++
+                    this.initDigit()
+                }
+            })
 
-        this.initDigit()
+            this.initDigit()
+        })
     }
     initDigit() {
         this.UI.keyboard.getKeyElements().forEach(node => {
@@ -244,26 +202,29 @@ class PracticeMode extends PIGameBase {
         super(numericalSequence)
         this.correctHintTimerId = 0
 
-        this.UI.keyboard.on('keypress', number => {
-            if (this.getDigitNumber() === number) {
-                this.UI.output.addToOutput(number)
-                this.digit++
-                this.initDigit()
-            }
-        })
+        this.UI.on('showed', () => {
+            this.UI.keyboard.addEventListener('keyboardPressed', e => {
+                if (this.getDigitNumber() === e.detail.key) {
+                    this.UI.output.addToOutput(e.detail.key)
+                    this.digit++
+                    this.initDigit()
+                }
+            })
 
-        this.initDigit()
+            this.initDigit()
+        })
     }
     initDigit() {
         this.UI.keyboard.getKeyElements().forEach(node => {
             node.classList.remove('correct', 'correctHint', 'incorrect')
-
             node.classList.add((node.dataset.key === this.getDigitNumber()) ? 'correct' : 'incorrect')
+
+            this.UI.output.setComplement()
         })
 
         clearTimeout(this.correctHintTimerId)
         this.correctHintTimerId = setTimeout(() => {
-            console.log('a')
+            this.UI.output.setComplement(this.getDigitNumber())
             this.UI.keyboard.getKeyElement(this.getDigitNumber()).classList.add('correctHint')
         }, 5000)
     }
@@ -274,7 +235,7 @@ class ChallengeMode extends PIGameBase {
         super(numericalSequence)
 
         this.UI.keyboard.on('keypress', number => {
-            this.UI.output.addToOutput(number)
+            this.UI.output.addToOutput(e.detail.key)
             this.digit++
             this.initDigit()
         })
