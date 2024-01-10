@@ -11,11 +11,6 @@ export default class ChallengeMode extends PIGameBase {
         })
     }
     keyPressed(key) {
-        if (key === 'Backspace') {
-
-            return
-        }
-
         switch (key) {
             case 'Backspace':
                 this.UI.output.backspaceOutput()
