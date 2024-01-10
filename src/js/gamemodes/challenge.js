@@ -12,11 +12,23 @@ export default class ChallengeMode extends PIGameBase {
     }
     keyPressed(key) {
         if (key === 'Backspace') {
-            this.UI.output.backspaceOutput()
-            this.digit--
+
             return
         }
-        this.UI.output.addToOutput(key)
-        this.digit++
+
+        switch (key) {
+            case 'Backspace':
+                this.UI.output.backspaceOutput()
+                this.digit--
+                break
+
+            case 'Enter':
+                break
+
+            default:
+                this.UI.output.addToOutput(key)
+                this.digit++
+                break
+        }
     }
 }
