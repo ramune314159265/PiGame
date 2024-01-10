@@ -198,9 +198,9 @@ body {
 
 button.gameMode {
     width: 50%;
-    min-width: 400px;
+    min-width: 250px;
     height: 4rem;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 select#numberSelector {
