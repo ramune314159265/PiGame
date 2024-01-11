@@ -13,7 +13,7 @@ export default class ChallengeMode extends PIGameBase {
     keyPressed(key) {
         switch (key) {
             case 'Backspace':
-                this.UI.output.backspaceOutput()
+                this.UI.output.backspace()
                 this.digit--
                 break
 

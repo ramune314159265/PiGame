@@ -16,7 +16,7 @@ export default class OutputElement extends HTMLElement {
         this.output.textContent += number
         this.output.scrollIntoView(false)
     }
-    backspaceOutput() {
+    backspace() {
         this.output.textContent = this.output.textContent.slice(0, -1)
         this.output.scrollIntoView(false)
     }
