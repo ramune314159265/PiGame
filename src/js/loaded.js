@@ -21,8 +21,9 @@ export const loaded = () => {
         })
     }
     selector.addEventListener('change', sequenceSelected)
+    sequenceSelected()
 
-    const gameStart = (GameMode,sequence = JSON.parse(localStorage.getItem('ramune.pigame.config')).mathSequences[selector.value].sequence) => {
+    const gameStart = (GameMode, sequence = JSON.parse(localStorage.getItem('ramune.pigame.config')).mathSequences[selector.value].sequence) => {
         console.log(sequence)
         new GameMode(sequence).show()
     }
@@ -35,7 +36,5 @@ export const loaded = () => {
     document.querySelector('#challengeMode').addEventListener('click', () => {
         gameStart(ChallengeMode)
     })
-
-    sequenceSelected()
 }
 
