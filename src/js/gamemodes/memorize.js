@@ -29,6 +29,6 @@ export default class MemorizeMode extends PIGameBase {
             node.classList.add((node.dataset.key === this.getDigitNumber()) ? 'correctHint' : 'incorrect')
         })
 
-        this.UI.output.setComplement(this.getDigitNumber(this.digit))
+        this.UI.output.setComplement(this.numericalSequence.slice(this.digit, this.digit + 5))
     }
 }
