@@ -201,7 +201,7 @@ button.gameMode {
     font-size: 16px;
 }
 
-select#numberSelector {
+select#sequenceSelector {
     padding: 16px;
     font-size: 16px;
     background: var(--background-primary);
