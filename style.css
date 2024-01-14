@@ -201,15 +201,26 @@ button.gameMode {
     font-size: 16px;
 }
 
+.selector {
+	width: 50%;
+	min-width: 250px;
+}
+
 select#sequenceSelector {
+	width: 100%;
     padding: 16px;
     font-size: 16px;
+	text-align: center;
     background: var(--background-primary);
     border-radius: var(--border-radius);
     border: none;
     box-shadow: var(--shadow);
     -webkit-user-select: none;
     user-select: none;
+}
+
+.symbol {
+	font-size: 5rem;
 }
 
 .gameMain {
