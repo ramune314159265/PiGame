@@ -44,7 +44,7 @@ export const init = () => {
             }, {
                 name: "JavaScript MAX_SAFE_INTEGER",
                 tex: "MAXSAFEINTEGER",
-                sequence: "18446744073709551616"
+                sequence: "9007199254740991"
             }, {
                 name: "生命、宇宙、そして万物についての究極の疑問の答え",
                 tex: "=",
