@@ -39,7 +39,7 @@ export const init = () => {
             }, {
                 name: "光速 m/s",
                 tex: "c",
-                sequence: "",
+                sequence: "299792458",
                 base: 10
             }, {
                 name: "2の32乗",
