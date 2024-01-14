@@ -25,7 +25,6 @@ export const loaded = () => {
     sequenceSelected()
 
     const gameStart = (GameMode, sequence = getConfig().mathSequences[selector.value].sequence) => {
-        console.log(sequence)
         new GameMode(sequence).show()
     }
     document.querySelector('#memorizeMode').addEventListener('click', () => {
