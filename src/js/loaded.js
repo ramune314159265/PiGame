@@ -1,8 +1,9 @@
 import { MemorizeMode, PracticeMode, ChallengeMode } from './gamemodes/index.js'
+import { getConfig } from './util/config.js'
 
 export const loaded = () => {
     const selector = document.querySelector('#sequenceSelector')
-    JSON.parse(localStorage.getItem('ramune.pigame.config')).mathSequences.forEach?.((sequence, i) => {
+    getConfig().mathSequences.forEach?.((sequence, i) => {
         const optionElement = document.createElement('option')
         optionElement.value = i
         optionElement.textContent = sequence.name
@@ -12,7 +13,7 @@ export const loaded = () => {
 
     const sequenceSelected = () => {
         const index = selector.value
-        const sequence = JSON.parse(localStorage.getItem('ramune.pigame.config')).mathSequences[index]
+        const sequence = getConfig().mathSequences[index]
 
         const symbolElement = document.querySelector('.symbol')
         MathJax.typesetPromise().then(() => {
@@ -23,7 +24,7 @@ export const loaded = () => {
     selector.addEventListener('change', sequenceSelected)
     sequenceSelected()
 
-    const gameStart = (GameMode, sequence = JSON.parse(localStorage.getItem('ramune.pigame.config')).mathSequences[selector.value].sequence) => {
+    const gameStart = (GameMode, sequence = getConfig().mathSequences[selector.value].sequence) => {
         console.log(sequence)
         new GameMode(sequence).show()
     }
