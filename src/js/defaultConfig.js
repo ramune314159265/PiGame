@@ -32,7 +32,7 @@ export const defaultConfig = {
             base: 10
         }, {
             name: "log10 2 1万桁 小数点以下",
-            tex: "\log_10 2",
+            tex: "\log_{10} 2",
             sequence: "",
             base: 10
         }, {
