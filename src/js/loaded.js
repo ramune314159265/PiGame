@@ -1,8 +1,7 @@
 import { MemorizeMode, PracticeMode, ChallengeMode } from './gamemodes/index.js'
 import { getConfig } from './util/config.js'
 
-export const loaded = () => {
-    const selector = document.querySelector('#sequenceSelector')
+export const loaded = () => {const selector = document.querySelector('#sequenceSelector')
     getConfig().mathSequences.forEach?.((sequence, i) => {
         const optionElement = document.createElement('option')
         optionElement.value = i

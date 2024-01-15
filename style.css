@@ -220,7 +220,8 @@ select#sequenceSelector {
 }
 
 .symbol {
-	font-size: 5rem;
+    font-size: 5rem;
+    pointer-events: none;
 }
 
 .gameMain {
