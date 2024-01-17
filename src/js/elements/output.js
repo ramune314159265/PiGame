@@ -2,10 +2,11 @@ export default class OutputElement extends HTMLElement {
     constructor() {
         super()
     }
-    #setElement(sourceTemplate) {
+    #setElement() {
         this.innerHTML = ''
 
         this.appendChild(document.querySelector('#output').content.cloneNode(true))
+        this.prefix = this.querySelector('.prefix')
         this.output = this.querySelector('.output')
         this.complement = this.querySelector('.complement')
     }
@@ -22,5 +23,8 @@ export default class OutputElement extends HTMLElement {
     }
     setComplement(number = '') {
         this.complement.textContent = number
+    }
+    setPrefix(content = '') {
+        this.prefix.textContent = content
     }
 }
