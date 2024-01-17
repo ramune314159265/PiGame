@@ -220,8 +220,15 @@ select#sequenceSelector {
 }
 
 .symbol {
+    height: 200px;
+    display: flex;
     font-size: 5rem;
     pointer-events: none;
+    align-items: center;
+}
+
+.symbol mjx-container[jax="CHTML"] {
+    margin: 0 !important;
 }
 
 .gameMain {
