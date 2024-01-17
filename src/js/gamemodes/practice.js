@@ -1,8 +1,8 @@
 import PIGameBase from './base.js'
 
 export default class PracticeMode extends PIGameBase {
-    constructor(numericalSequence) {
-        super(numericalSequence)
+    constructor(option) {
+        super(option)
         this.correctHintTimerId = 0
 
         this.UI.on('showed', () => {

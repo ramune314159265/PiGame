@@ -46,26 +46,31 @@ export const defaultConfig = {
             name: "光速 m/s",
             tex: "c",
             sequence: "299792458",
+            prefix:'',
             base: 10
         }, {
             name: "2の32乗",
             tex: "2^{32}",
             sequence: "4294967296",
+            prefix:'',
             base: 10
         }, {
             name: "2の64乗",
             tex: "2^{64}",
             sequence: "18446744073709551616",
+            prefix:'',
             base: 10
         }, {
             name: "JavaScript MAX_SAFE_INTEGER",
             tex: "\\small{MAX\\_SAFE\\_INTEGER}",
+            prefix:'',
             sequence: "9007199254740991",
             base: 10
         }, {
             name: "生命、宇宙、そして万物についての究極の疑問の答え",
             tex: "😀🌌🚣=",
             sequence: "42",
+            prefix:'',
             base: 10
         },
     ]

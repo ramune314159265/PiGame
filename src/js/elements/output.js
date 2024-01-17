@@ -6,25 +6,25 @@ export default class OutputElement extends HTMLElement {
         this.innerHTML = ''
 
         this.appendChild(document.querySelector('#output').content.cloneNode(true))
-        this.prefix = this.querySelector('.prefix')
-        this.output = this.querySelector('.output')
-        this.complement = this.querySelector('.complement')
+        this.prefixElement = this.querySelector('.prefix')
+        this.outputElement = this.querySelector('.output')
+        this.complementElement = this.querySelector('.complement')
     }
     connectedCallback() {
         this.#setElement()
     }
     addToOutput(number) {
-        this.output.textContent += number
-        this.output.scrollIntoView(false)
+        this.outputElement.textContent += number
+        this.outputElement.scrollIntoView(false)
     }
     backspace() {
-        this.output.textContent = this.output.textContent.slice(0, -1)
-        this.output.scrollIntoView(false)
+        this.outputElement.textContent = this.outputElement.textContent.slice(0, -1)
+        this.outputElement.scrollIntoView(false)
     }
     setComplement(number = '') {
-        this.complement.textContent = number
+        this.complementElement.textContent = number
     }
     setPrefix(content = '') {
-        this.prefix.textContent = content
+        this.prefixElement.textContent = content
     }
 }
