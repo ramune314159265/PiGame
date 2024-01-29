@@ -286,7 +286,7 @@ numeric-keyboard {
 }
 
 button.key {
-    font-size: 20px;
+    font-size: 24px;
 }
 
 @media not (hover:none) {
