@@ -17,6 +17,7 @@ export default class PIGameBase {
         })
         this.UI.on('showed', () => {
             this.UI.output.setPrefix(this.sequencePrefix)
+            this.UI.keyboard.focus()
         })
 
         await this.UI.show()
