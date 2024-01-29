@@ -18,17 +18,17 @@ export default class MemorizeMode extends PIGameBase {
         if (this.getDigitNumber() !== key) {
             return
         }
-        this.UI.output.addToOutput(key)
         this.digit++
         this.initDigit()
     }
-    initDigit() {
+    initDigit(digit = this.digit) {
         this.UI.keyboard.getKeyElements().forEach(node => {
             node.classList.remove('correctHint', 'incorrect')
 
-            node.classList.add((node.dataset.key === this.getDigitNumber()) ? 'correctHint' : 'incorrect')
+            node.classList.add((node.dataset.key === this.getDigitNumber(digit)) ? 'correctHint' : 'incorrect')
         })
 
-        this.UI.output.setComplement(this.numericalSequence.slice(this.digit, this.digit + 100))
+        this.UI.output.setOutput(this.numericalSequence.slice(0, digit))
+        this.UI.output.setComplement(this.numericalSequence.slice(digit, digit + 100))
     }
 }
