@@ -62,12 +62,14 @@ export default class KeyboardElement extends HTMLElement {
 
     static layouts = {
         'calc': {
-            10:  document.querySelector('#base16Keyboard'),
-            16: document.querySelector('#base16Keyboard')
+            2:  document.querySelector('#base2Keyboard'),
+            10:  document.querySelector('#calcBase10Keyboard'),
+            16: document.querySelector('#base16Keyboard'),
         },
         'phone': {
-            10: document.querySelector('#phonebase10Keyboard'),
-            16: document.querySelector('#base16Keyboard')
+            2:  document.querySelector('#base2Keyboard'),
+            10:  document.querySelector('#phoneBase10Keyboard'),
+            16: document.querySelector('#base16Keyboard'),
         }
     }
     getKeyElements() {
