@@ -234,7 +234,7 @@ select#sequenceSelector {
 .gameMain {
     width: 100%;
     height: 100%;
-    padding: 0px 12px 36px 12px;
+    padding: 0px 12px 12px 12px;
     display: grid;
     grid-auto-rows: 3rem 2fr 1fr;
     justify-items: center;
