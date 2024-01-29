@@ -25,6 +25,9 @@ export default class PracticeMode extends PIGameBase {
     initDigit(digit = this.digit) {
         this.UI.output.setOutput(this.numericalSequence.slice(0, digit))
 
+        clearTimeout(this.correctHintTimerId)
+        this.correctHintTimerId = setTimeout(this.showHint, 5000)
+
         this.UI.keyboard.getKeyElements().forEach(node => {
             node.classList.remove('correct', 'correctHint', 'incorrect')
             node.classList.add((node.dataset.key === this.getDigitNumber(digit)) ? 'correct' : 'incorrect')
@@ -32,12 +35,10 @@ export default class PracticeMode extends PIGameBase {
             this.UI.output.setComplement()
         })
 
-        clearTimeout(this.correctHintTimerId)
-        this.correctHintTimerId = setTimeout(() => {
-            this.UI.output.setComplement(this.getDigitNumber(digit))
-            this.UI.keyboard.getKeyElement(this.getDigitNumber(digit)).classList.add('correctHint')
-        }, 5000)
-
         this.digit = digit
+    }
+    showHint() {
+        this.UI.output.setComplement(this.getDigitNumber(digit))
+        this.UI.keyboard.getKeyElement(this.getDigitNumber(digit)).classList.add('correctHint')
     }
 }
