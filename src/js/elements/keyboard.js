@@ -10,6 +10,8 @@ export default class KeyboardElement extends HTMLElement {
     #set(sourceTemplate) {
         this.innerHTML = ''
 
+        this.style.gridTemplateColumns = `repeat(${sourceTemplate.dataset.columns}, 1fr)`
+        this.style.gridTemplateRows = `repeat(${sourceTemplate.dataset.rows}, 1fr)`
         this.appendChild(sourceTemplate.content.cloneNode(true))
     }
     connectedCallback() {
