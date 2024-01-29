@@ -26,10 +26,7 @@ export default class MainMenu {
             const sequence = getConfig().mathSequences[index]
 
             const symbolElement = this.component.querySelector('.symbol')
-            MathJax.typesetPromise().then(() => {
-                symbolElement.textContent = `$$${sequence.tex}$$`
-                MathJax.typesetPromise()
-            })
+            symbolElement.setTex(sequence.tex)
         }
         selector.addEventListener('change', sequenceSelected)
         sequenceSelected()
