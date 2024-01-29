@@ -60,6 +60,9 @@ export default class KeyboardElement extends HTMLElement {
     attributeChangedCallback(attributeName, oldValue, newValue) {
         this.#set(KeyboardElement.layouts[this.getAttribute('layout') ?? 'calc'][this.getAttribute('base') ?? 10])
     }
+    focus(){
+        this.getKeyElements()[0].focus()
+    }
 
     static layouts = {
         'calc': {
