@@ -2,7 +2,7 @@ export default class OutputElement extends HTMLElement {
     constructor() {
         super()
     }
-    #setElement() {
+    #set() {
         this.innerHTML = ''
 
         this.appendChild(document.querySelector('#output').content.cloneNode(true))
@@ -11,7 +11,7 @@ export default class OutputElement extends HTMLElement {
         this.complementElement = this.querySelector('.complement')
     }
     connectedCallback() {
-        this.#setElement()
+        this.#set()
     }
     addToOutput(number) {
         this.outputElement.textContent += number

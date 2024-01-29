@@ -5,15 +5,15 @@ export default class KeyboardElement extends HTMLElement {
         super()
     }
     static get observedAttributes() {
-        return ['layout'];
+        return ['layout', 'base'];
     }
-    #setElement(sourceTemplate) {
+    #set(sourceTemplate) {
         this.innerHTML = ''
 
         this.appendChild(sourceTemplate.content.cloneNode(true))
     }
     connectedCallback() {
-        this.#setElement(KeyboardElement.layouts[this.getAttribute('layout') ?? 'calc'])
+        this.#set(KeyboardElement.layouts[this.getAttribute('layout') ?? 'calc'][this.getAttribute('base') ?? 10])
         this.childNodes.forEach(node => {
             if (!node.dataset?.key) {
                 return
@@ -55,11 +55,13 @@ export default class KeyboardElement extends HTMLElement {
         document.removeEventListener('keyup', this.#keyUpEventHandle)
     }
     attributeChangedCallback(attributeName, oldValue, newValue) {
-        this.#setElement(KeyboardElement.layouts[newValue])
+        this.#set(KeyboardElement.layouts[this.getAttribute('layout') ?? 'calc'][this.getAttribute('base') ?? 10])
     }
 
     static layouts = {
-        'calc': document.querySelector('#calcKeyboard')
+        'calc': {
+            10: document.querySelector('#calc10Keyboard')
+        }
     }
     getKeyElements() {
         return this.querySelectorAll(`[data-key]`)
