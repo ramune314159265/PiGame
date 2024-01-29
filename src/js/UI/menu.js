@@ -39,6 +39,7 @@ export default class MainMenu {
                 numericalSequence: option.sequence,
                 sequenceName: option.name,
                 sequencePrefix: option.prefix,
+                sequenceBase: option.base,
             }).show()
         }
         this.component.querySelector('#memorizeMode').addEventListener('click', () => {

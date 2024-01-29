@@ -13,9 +13,7 @@ export default class KeyboardElement extends HTMLElement {
         this.style.gridTemplateColumns = `repeat(${sourceTemplate.dataset.columns}, 1fr)`
         this.style.gridTemplateRows = `repeat(${sourceTemplate.dataset.rows}, 1fr)`
         this.appendChild(sourceTemplate.content.cloneNode(true))
-    }
-    connectedCallback() {
-        this.#set(KeyboardElement.layouts[this.getAttribute('layout') ?? 'calc'][this.getAttribute('base') ?? 10])
+
         this.childNodes.forEach(node => {
             if (!node.dataset?.key) {
                 return
@@ -30,6 +28,9 @@ export default class KeyboardElement extends HTMLElement {
                 }))
             })
         })
+    }
+    connectedCallback() {
+        this.#set(KeyboardElement.layouts[this.getAttribute('layout') ?? 'calc'][this.getAttribute('base') ?? 10])
 
         this.#keyDownEventHandle = e => {
             const keyElement = this.getKeyElement(e.key)
@@ -62,13 +63,13 @@ export default class KeyboardElement extends HTMLElement {
 
     static layouts = {
         'calc': {
-            2:  document.querySelector('#base2Keyboard'),
-            10:  document.querySelector('#calcBase10Keyboard'),
+            2: document.querySelector('#base2Keyboard'),
+            10: document.querySelector('#calcBase10Keyboard'),
             16: document.querySelector('#base16Keyboard'),
         },
         'phone': {
-            2:  document.querySelector('#base2Keyboard'),
-            10:  document.querySelector('#phoneBase10Keyboard'),
+            2: document.querySelector('#base2Keyboard'),
+            10: document.querySelector('#phoneBase10Keyboard'),
             16: document.querySelector('#base16Keyboard'),
         }
     }

@@ -6,9 +6,12 @@ export default class PIGameBase {
         this.numericalSequence = option.numericalSequence
         this.sequenceName = option.sequenceName
         this.sequencePrefix = option.sequencePrefix
+        this.sequenceBase = option.sequenceBase
         this.digit = 0
     }
     async show() {
+        this.UI.keyboard.setAttribute("base", this.sequenceBase)
+
         this.UI.on('closeClicked', () => {
             this.hide()
         })
