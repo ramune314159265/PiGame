@@ -38,7 +38,7 @@ export default class PracticeMode extends PIGameBase {
         this.digit = digit
     }
     showHint() {
-        this.UI.output.setComplement(this.getDigitNumber(digit))
-        this.UI.keyboard.getKeyElement(this.getDigitNumber(digit)).classList.add('correctHint')
+        this.UI.output.setComplement(this.getDigitNumber())
+        this.UI.keyboard.getKeyElement(this.getDigitNumber()).classList.add('correctHint')
     }
 }
