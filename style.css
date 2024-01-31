@@ -160,7 +160,7 @@ body {
     background: var(--background-secondary);
     overflow: hidden;
     overscroll-behavior: none;
-    font-family: sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     touch-action: pan-y;
     touch-callout: none;
     -webkit-touch-callout: none;
@@ -202,15 +202,19 @@ button.gameMode {
 }
 
 .selector {
-	width: 50%;
-	min-width: 250px;
+    width: 50%;
+    min-width: 250px;
+}
+
+select {
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 select#sequenceSelector {
-	width: 100%;
+    width: 100%;
     padding: 16px;
     font-size: 16px;
-	text-align: center;
+    text-align: center;
     background: var(--background-primary);
     border-radius: var(--border-radius);
     border: none;
@@ -290,6 +294,7 @@ button.key {
 }
 
 @media not (hover:none) {
+
     button.button:focus-visible,
     button.button:hover {
         outline: none;
