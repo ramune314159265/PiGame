@@ -7,9 +7,12 @@ export default class StatusElement extends HTMLElement {
 
         this.appendChild(document.querySelector('#statusBar').content.cloneNode(true))
         this.digitInputElement = this.querySelector('.nowDigit')
-        this.maxDigitElement = this.querySelector('.maxDigit')
+        this.digitLengthElement = this.querySelector('.digitLength')
     }
     connectedCallback() {
         this.#set()
+    }
+    setDigitLength(length){
+
     }
 }
