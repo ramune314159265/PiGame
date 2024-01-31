@@ -298,6 +298,8 @@ game-status {
     height: 2rem;
     display: flex;
     align-items: center;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 input.nowDigit {
