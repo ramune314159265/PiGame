@@ -27,4 +27,7 @@ export default class StatusElement extends HTMLElement {
     setNowDigitLength(length) {
         this.digitInputElement.value = length
     }
+    disableDigitInput(){
+        this.digitInputElement.disabled = true
+    }
 }
