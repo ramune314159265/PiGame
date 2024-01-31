@@ -11,6 +11,10 @@ export default class MemorizeMode extends PIGameBase {
                 this.keyPressed(e.detail.key)
             })
 
+            this.UI.status.addEventListener('digitChanged', e => {
+                this.initDigit(parseInt(e.detail.digit))
+            })
+
             this.initDigit()
         })
     }
@@ -23,6 +27,7 @@ export default class MemorizeMode extends PIGameBase {
     }
     initDigit(digit = this.digit) {
         this.digit = digit
+        this.UI.status.setNowDigitLength(this.digit)
 
         this.UI.keyboard.getKeyElements().forEach(node => {
             node.classList.remove('correctHint', 'incorrect')

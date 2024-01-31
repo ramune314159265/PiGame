@@ -12,6 +12,10 @@ export default class PracticeMode extends PIGameBase {
                 this.keyPressed(e.detail.key)
             })
 
+            this.UI.status.addEventListener('digitChanged', e => {
+                this.initDigit(e.detail.digit)
+            })
+
             this.initDigit()
         })
     }
@@ -24,6 +28,7 @@ export default class PracticeMode extends PIGameBase {
     }
     initDigit(digit = this.digit) {
         this.digit = digit
+        this.UI.status.setNowDigitLength(this.digit)
 
         this.UI.output.setOutput(this.numericalSequence.slice(0, digit))
 
