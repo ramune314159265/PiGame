@@ -22,6 +22,8 @@ export default class MemorizeMode extends PIGameBase {
         this.initDigit()
     }
     initDigit(digit = this.digit) {
+        this.digit = digit
+
         this.UI.keyboard.getKeyElements().forEach(node => {
             node.classList.remove('correctHint', 'incorrect')
 
@@ -30,7 +32,5 @@ export default class MemorizeMode extends PIGameBase {
 
         this.UI.output.setOutput(this.numericalSequence.slice(0, digit))
         this.UI.output.setComplement(this.numericalSequence.slice(digit, digit + 100))
-
-        this.digit = digit
     }
 }

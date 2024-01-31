@@ -23,6 +23,8 @@ export default class PracticeMode extends PIGameBase {
         this.initDigit()
     }
     initDigit(digit = this.digit) {
+        this.digit = digit
+
         this.UI.output.setOutput(this.numericalSequence.slice(0, digit))
 
         clearTimeout(this.correctHintTimerId)
@@ -34,8 +36,6 @@ export default class PracticeMode extends PIGameBase {
 
             this.UI.output.setComplement()
         })
-
-        this.digit = digit
     }
     showHint() {
         this.UI.output.setComplement(this.getDigitNumber())
