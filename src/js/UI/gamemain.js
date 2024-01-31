@@ -8,6 +8,7 @@ export default class GameMainUI extends EventRegister {
         this.component.appendChild(document.querySelector('#gameMainUI').content.cloneNode(true))
 
         this.output = this.component.querySelector('.outputField')
+        this.status = this.component.querySelector('.status')
         this.keyboard = this.component.querySelector('.keyboard')
 
         this.component.querySelector('.back').addEventListener('click', () => {

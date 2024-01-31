@@ -39,10 +39,19 @@
                 <div class="sessionTitle"></div>
             </div>
             <numeric-output class="outputField"></numeric-output>
+            <game-status class="status"></game-status>
             <numeric-keyboard class="keyboard"></numeric-keyboard>
         </template>
         <template id="output">
             <span class="prefix"></span><span class="output"></span><span class="complement"></span>
+        </template>
+        <template id="statusBar">
+            <div class="digitStatus">
+                <input type="number" class="nowDigit">
+                <span>/</span>
+                <span class="maxDigit"></span>
+                <span>桁</span>
+            </div>
         </template>
         <template id="calcBase10Keyboard" data-columns="3" data-rows="4">
             <button type="button" class="button key" data-key="7">7</button>
