@@ -33,6 +33,10 @@ export default class KeyboardElement extends HTMLElement {
         this.#set(KeyboardElement.layouts[this.getAttribute('layout') ?? 'calc'][this.getAttribute('base') ?? 10])
 
         this.#keyDownEventHandle = e => {
+            if (e.target.tagName === 'INPUT') {
+                return
+            }
+
             const keyElement = this.getKeyElement(e.key)
             if (!keyElement) {
                 return
@@ -41,6 +45,10 @@ export default class KeyboardElement extends HTMLElement {
             keyElement.classList.add('active')
         }
         this.#keyUpEventHandle = e => {
+            if (e.target.tagName === 'INPUT') {
+                return
+            }
+
             const keyElement = this.getKeyElement(e.key)
             if (!keyElement) {
                 return
@@ -60,7 +68,7 @@ export default class KeyboardElement extends HTMLElement {
     attributeChangedCallback(attributeName, oldValue, newValue) {
         this.#set(KeyboardElement.layouts[this.getAttribute('layout') ?? 'calc'][this.getAttribute('base') ?? 10])
     }
-    focus(){
+    focus() {
         this.getKeyElements()[0].focus()
     }
 
