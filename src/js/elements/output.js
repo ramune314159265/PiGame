@@ -13,16 +13,8 @@ export default class OutputElement extends HTMLElement {
     connectedCallback() {
         this.#set()
     }
-    addToOutput(number) {
-        this.outputElement.textContent += number
-        this.outputElement.scrollIntoView(false)
-    }
     setOutput(number) {
         this.outputElement.textContent = number
-        this.outputElement.scrollIntoView(false)
-    }
-    backspace() {
-        this.outputElement.textContent = this.outputElement.textContent.slice(0, -1)
         this.outputElement.scrollIntoView(false)
     }
     setComplement(number = '') {
