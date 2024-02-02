@@ -9,6 +9,8 @@ export default class StatusElement extends HTMLElement {
         this.digitInputElement = this.querySelector('.nowDigit')
         this.digitLengthElement = this.querySelector('.digitLength')
         this.showHintButtonElement = this.querySelector('.showHint')
+        this.timerMinuteElement = this.querySelector('.minutes')
+        this.timerSecondsElement = this.querySelector('.seconds')
 
         this.digitInputElement.addEventListener('change', e => {
             this.dispatchEvent(new CustomEvent('digitChanged', {
@@ -39,5 +41,9 @@ export default class StatusElement extends HTMLElement {
     }
     disableHintButton() {
         this.showHintButtonElement.disabled = true
+    }
+    setTime(seconds) {
+        this.timerMinuteElement.textContent = Math.floor(seconds / 60)
+        this.timerSecondsElement.textContent = String(seconds % 60).padStart(2, '0')
     }
 }

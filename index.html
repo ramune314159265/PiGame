@@ -47,10 +47,15 @@
         </template>
         <template id="statusBar">
             <div class="statuses">
-                <input type="number" class="nowDigit" min="0">
-                <span>/</span>
-                <span class="digitLength"></span>
-                <span>桁</span>
+                <div class="digitStatus">
+                    <input type="number" class="nowDigit" min="0">
+                    <span>/</span>
+                    <span class="digitLength"></span>
+                    <span>桁</span>
+                </div>
+                <div class="timerStatus">
+                    <span class="minutes">--</span><span>:</span><span class="seconds">--</span>
+                </div>
             </div>
             <div class="buttons">
                 <button type="button" class="button statusBarButton showHint hasSvgIcon" title="ヒントを表示する">

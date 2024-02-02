@@ -311,11 +311,27 @@ game-status {
 
 .statuses {
     height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-size: 20px;
 }
 
 .buttons {
     height: 100%;
+}
+
+.digitStatus {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.timerStatus {
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 input.nowDigit {
