@@ -244,7 +244,7 @@ select#sequenceSelector {
     height: 100%;
     padding: 0px 12px 12px 12px;
     display: grid;
-    grid-auto-rows: 3rem 2fr 2rem 1fr;
+    grid-auto-rows: 3rem 2fr 3rem 1fr;
     justify-items: center;
     gap: 8px;
     background: var(--background-secondary);
@@ -299,7 +299,7 @@ button.key {
 
 game-status {
     width: 100%;
-    height: 2rem;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -307,10 +307,15 @@ game-status {
     user-select: none;
 }
 
-input.nowDigit {
-    width: 5rem;
+.digitStatus {
     height: 100%;
-    padding: 4px;
+    font-size: 20px;
+}
+
+input.nowDigit {
+    width: 6rem;
+    height: 100%;
+    padding: 8px;
     font-size: inherit;
     box-shadow: var(--shadow);
     border: none;
@@ -319,7 +324,8 @@ input.nowDigit {
 
 .button.statusBarButton {
     height: 100%;
-    aspect-ratio: 16 / 9;
+    padding: 8px;
+    aspect-ratio: 8 / 5;
 }
 
 @media not (hover:none) {
