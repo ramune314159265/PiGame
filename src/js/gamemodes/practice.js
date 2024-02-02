@@ -16,6 +16,10 @@ export default class PracticeMode extends PIGameBase {
                 this.initDigit(e.detail.digit)
             })
 
+            this.UI.status.addEventListener('hintClicked', e => {
+                this.showHint()
+            })
+
             this.initDigit()
         })
     }
@@ -28,6 +32,7 @@ export default class PracticeMode extends PIGameBase {
     }
     initDigit(digit = this.digit) {
         this.digit = digit
+        this.UI.status.enableHintButton()
         this.UI.status.setNowDigitLength(this.digit)
 
         this.UI.output.setOutput(this.numericalSequence.slice(0, digit))
@@ -43,6 +48,9 @@ export default class PracticeMode extends PIGameBase {
         })
     }
     showHint() {
+        clearTimeout(this.correctHintTimerId)
+
+        this.UI.status.disableHintButton()
         this.UI.output.setComplement(this.getDigitNumber())
         this.UI.keyboard.getKeyElement(this.getDigitNumber()).classList.add('correctHint')
     }

@@ -8,6 +8,7 @@ export default class StatusElement extends HTMLElement {
         this.appendChild(document.querySelector('#statusBar').content.cloneNode(true))
         this.digitInputElement = this.querySelector('.nowDigit')
         this.digitLengthElement = this.querySelector('.digitLength')
+        this.showHintButtonElement = this.querySelector('.showHint')
 
         this.digitInputElement.addEventListener('change', e => {
             this.dispatchEvent(new CustomEvent('digitChanged', {
@@ -15,6 +16,9 @@ export default class StatusElement extends HTMLElement {
                     digit: e.target.value
                 }
             }))
+        })
+        this.showHintButtonElement.addEventListener('click', e => {
+            this.dispatchEvent(new CustomEvent('hintClicked', {}))
         })
     }
     connectedCallback() {
@@ -27,7 +31,13 @@ export default class StatusElement extends HTMLElement {
     setNowDigitLength(length) {
         this.digitInputElement.value = length
     }
-    disableDigitInput(){
+    disableDigitInput() {
         this.digitInputElement.disabled = true
+    }
+    enableHintButton() {
+        this.showHintButtonElement.disabled = false
+    }
+    disableHintButton() {
+        this.showHintButtonElement.disabled = true
     }
 }

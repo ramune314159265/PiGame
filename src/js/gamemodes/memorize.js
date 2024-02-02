@@ -6,6 +6,7 @@ export default class MemorizeMode extends PIGameBase {
 
         this.UI.on('showed', () => {
             this.UI.keyboard.hideKeys(['Backspace', 'Enter'])
+            this.UI.status.disableHintButton()
 
             this.UI.keyboard.addEventListener('keyboardPressed', e => {
                 this.keyPressed(e.detail.key)
