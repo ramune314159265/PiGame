@@ -319,7 +319,7 @@ input.nowDigit {
 
 .button.statusBarButton {
     height: 100%;
-    padding-inline: 12px;
+    aspect-ratio: 16 / 9;
 }
 
 @media not (hover:none) {
