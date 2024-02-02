@@ -308,7 +308,7 @@ game-status {
 }
 
 input.nowDigit {
-    width: 7rem;
+    width: 5rem;
     height: 100%;
     padding: 4px;
     font-size: inherit;
