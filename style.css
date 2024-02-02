@@ -96,12 +96,14 @@ button.button {
     transition: filter 0.2s, background-color 0.1s;
 }
 
+button.button:hover:not([disabled]),
 button.button.hover:not([disabled]) {
     outline: none;
     filter: brightness(0.8);
 }
 
-button.button:active:not([disabled]) {
+button.button:active:not([disabled]),
+button.button.active:not([disabled]) {
     filter: brightness(0.6);
 }
 
