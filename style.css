@@ -309,9 +309,13 @@ game-status {
     user-select: none;
 }
 
-.digitStatus {
+.statuses {
     height: 100%;
     font-size: 20px;
+}
+
+.buttons {
+    height: 100%;
 }
 
 input.nowDigit {
