@@ -55,6 +55,12 @@ export const defaultConfig = {
             prefix: '',
             base: 10
         }, {
+            name: "1光年 m",
+            tex: "1ly",
+            sequence: "9460730472580800",
+            prefix: '',
+            base: 10
+        }, {
             name: "2の32乗",
             tex: "2^{32}",
             sequence: "4294967296",
