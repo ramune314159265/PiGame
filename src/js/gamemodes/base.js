@@ -12,7 +12,6 @@ export default class PIGameBase {
     async show() {
         this.UI.keyboard.setAttribute("base", this.sequenceBase)
 
-
         this.UI.on('closeClicked', () => {
             this.hide()
         })
