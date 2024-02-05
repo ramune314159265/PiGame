@@ -9,8 +9,6 @@ export default class ChallengeMode extends PIGameBase {
         this.UI.on('showed', () => {
             this.UI.status.disableDigitInput()
             this.UI.status.disableHintButton()
-
-            this.initDigit()
         })
     }
     numKeyPressed(key) {

@@ -10,8 +10,6 @@ export default class MemorizeMode extends PIGameBase {
             this.UI.status.addEventListener('digitChanged', e => {
                 this.initDigit(parseInt(e.detail.digit))
             })
-
-            this.initDigit()
         })
     }
     enterPressed() { }

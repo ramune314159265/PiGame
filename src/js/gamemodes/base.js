@@ -19,7 +19,6 @@ export default class PIGameBase {
         this.UI.on('showed', () => {
             this.UI.status.setDigitLength(this.numericalSequence.length)
             this.UI.output.setPrefix(this.sequencePrefix)
-
             this.UI.keyboard.addEventListener('keyboardPressed', e => {
                 switch (e.detail.key) {
                     case 'Backspace':
@@ -35,8 +34,9 @@ export default class PIGameBase {
                         break
                 }
             })
-
             this.UI.keyboard.focus()
+
+            this.initDigit()
         })
 
         await this.UI.show()

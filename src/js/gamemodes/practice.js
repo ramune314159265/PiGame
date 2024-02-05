@@ -13,8 +13,6 @@ export default class PracticeMode extends PIGameBase {
             this.UI.status.addEventListener('hintClicked', e => {
                 this.showHint()
             })
-
-            this.initDigit()
         })
     }
     enterPressed() { }
