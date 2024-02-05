@@ -10,26 +10,8 @@ export default class ChallengeMode extends PIGameBase {
             this.UI.status.disableDigitInput()
             this.UI.status.disableHintButton()
 
-            this.UI.keyboard.addEventListener('keyboardPressed', e => {
-                this.keyPressed(e.detail.key)
-            })
-
             this.initDigit()
         })
-    }
-    keyPressed(key) {
-        switch (key) {
-            case 'Backspace':
-                this.backSpacePressed()
-                break
-
-            case 'Enter':
-                break
-
-            default:
-                this.numKeyPressed(key)
-                break
-        }
     }
     numKeyPressed(key) {
         this.inputtedContent += key
@@ -40,6 +22,7 @@ export default class ChallengeMode extends PIGameBase {
             this.timerStart()
         }
     }
+    enterPressed() { }
     backSpacePressed() {
         if (this.digit <= 0) {
             return

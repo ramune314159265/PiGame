@@ -7,15 +7,9 @@ export default class PracticeMode extends PIGameBase {
 
         this.UI.on('showed', () => {
             this.UI.keyboard.hideKeys(['Backspace', 'Enter'])
-
-            this.UI.keyboard.addEventListener('keyboardPressed', e => {
-                this.keyPressed(e.detail.key)
-            })
-
             this.UI.status.addEventListener('digitChanged', e => {
                 this.initDigit(e.detail.digit)
             })
-
             this.UI.status.addEventListener('hintClicked', e => {
                 this.showHint()
             })
@@ -23,7 +17,9 @@ export default class PracticeMode extends PIGameBase {
             this.initDigit()
         })
     }
-    keyPressed(key) {
+    enterPressed() { }
+    backSpacePressed() { }
+    numKeyPressed(key) {
         if (this.getDigitNumber() !== key) {
             return
         }
