@@ -56,8 +56,12 @@ export default class ChallengeMode extends PIGameBase {
     }
     timerStart() {
         this.startTimeStamp = Date.now()
-        setInterval(() => this.timerHandle(), 1000)
         this.timerHandle()
+        const interbalId = setInterval(() => this.timerHandle(), 1000)
+
+        this.UI.on('closeClicked', () => {
+            clearInterval(interbalId)
+        })
     }
     timerHandle() {
         const diffSecond = Math.round((Date.now() - this.startTimeStamp) / 1000)
