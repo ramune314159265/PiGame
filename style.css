@@ -96,7 +96,6 @@ button.button {
     transition: filter 0.2s, background-color 0.1s;
 }
 
-button.button:hover:not([disabled]),
 button.button.hover:not([disabled]) {
     outline: none;
     filter: brightness(0.8);
@@ -121,7 +120,6 @@ button.correct.active {
     background: var(--green);
 }
 
-button.incorrect:active,
 button.incorrect.active {
     background: var(--red);
 }
@@ -351,6 +349,14 @@ input.nowDigit {
 }
 
 @media not (hover:none) {
+    button.button:hover:not([disabled]) {
+        outline: none;
+        filter: brightness(0.8);
+    }
+
+    button.incorrect:active {
+        background: var(--red);
+    }
 
     button.button:focus-visible {
         outline: none;
