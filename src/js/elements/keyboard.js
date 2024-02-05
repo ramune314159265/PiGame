@@ -8,10 +8,7 @@ export default class KeyboardElement extends HTMLElement {
         this.base = 10
         this.hiddenKeys = []
     }
-    static get observedAttributes() {
-        return ['layout', 'base'];
-    }
-    #set(sourceTemplate) {
+    #set(sourceTemplate = KeyboardElement.layouts[this.layout][this.base]) {
         this.innerHTML = ''
 
         this.style.gridTemplateColumns = `repeat(${sourceTemplate.dataset.columns}, 1fr)`
@@ -74,9 +71,6 @@ export default class KeyboardElement extends HTMLElement {
         document.removeEventListener('keydown', this.#keyDownEventHandle)
         document.removeEventListener('keyup', this.#keyUpEventHandle)
     }
-    attributeChangedCallback(attributeName, oldValue, newValue) {
-        this.#set(KeyboardElement.layouts[this.getAttribute('layout') ?? 'calc'][this.getAttribute('base') ?? 10])
-    }
     focus() {
         this.getKeyElements()[0].focus()
     }
@@ -102,7 +96,7 @@ export default class KeyboardElement extends HTMLElement {
     hideKeys(keyArray) {
         this.hiddenKeys = this.hiddenKeys.concat(keyArray)
 
-        this.#set(KeyboardElement.layouts[this.layout][this.base])
+        this.#set()
     }
     setKeyLayout(layout = this.layout, base = this.base){
         this.layout = layout

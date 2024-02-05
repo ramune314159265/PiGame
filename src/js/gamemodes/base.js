@@ -10,12 +10,11 @@ export default class PIGameBase {
         this.digit = 0
     }
     async show() {
-        this.UI.keyboard.setAttribute("base", this.sequenceBase)
-
         this.UI.on('closeClicked', () => {
             this.hide()
         })
         this.UI.on('showed', () => {
+            this.UI.keyboard.setKeyLayout(undefined, this.sequenceBase)
             this.UI.status.setDigitLength(this.numericalSequence.length)
             this.UI.output.setPrefix(this.sequencePrefix)
             this.UI.keyboard.addEventListener('keyboardPressed', e => {
