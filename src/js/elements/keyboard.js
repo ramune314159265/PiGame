@@ -16,7 +16,6 @@ export default class KeyboardElement extends HTMLElement {
         this.appendChild(sourceTemplate.content.cloneNode(true))
 
         this.hiddenKeys.forEach(key => {
-            console.log(this.hiddenKeys)
             this.getKeyElement(key).classList.add('hide')
         })
 
