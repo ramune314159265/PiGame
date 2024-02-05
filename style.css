@@ -170,13 +170,23 @@ body {
     -webkit-touch-callout: none;
 }
 
-.main {
-    height: 100%;
-    padding: 24px;
+.UItop {
+    background: var(--background-primary);
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    justify-content: space-around;
+    justify-content: center;
+}
+
+.UIbottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
 }
 
 .title {
