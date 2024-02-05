@@ -3,6 +3,10 @@ export default class KeyboardElement extends HTMLElement {
     #keyDownEventHandle
     constructor() {
         super()
+
+        this.layout = 'calc'
+        this.base = 10
+        this.hiddenKeys = []
     }
     static get observedAttributes() {
         return ['layout', 'base'];
@@ -13,6 +17,11 @@ export default class KeyboardElement extends HTMLElement {
         this.style.gridTemplateColumns = `repeat(${sourceTemplate.dataset.columns}, 1fr)`
         this.style.gridTemplateRows = `repeat(${sourceTemplate.dataset.rows}, 1fr)`
         this.appendChild(sourceTemplate.content.cloneNode(true))
+
+        this.hiddenKeys.forEach(key => {
+            console.log(this.hiddenKeys)
+            this.getKeyElement(key).classList.add('hide')
+        })
 
         this.childNodes.forEach(node => {
             if (!node.dataset?.key) {
@@ -30,7 +39,7 @@ export default class KeyboardElement extends HTMLElement {
         })
     }
     connectedCallback() {
-        this.#set(KeyboardElement.layouts[this.getAttribute('layout') ?? 'calc'][this.getAttribute('base') ?? 10])
+        this.#set(KeyboardElement.layouts[this.getAttribute('layout') ?? this.layout][this.getAttribute('base') ?? this.base])
 
         this.#keyDownEventHandle = e => {
             if (e.target.tagName === 'INPUT') {
@@ -91,8 +100,14 @@ export default class KeyboardElement extends HTMLElement {
         return this.querySelector(`[data-key="${number}"]`)
     }
     hideKeys(keyArray) {
-        keyArray.forEach(key => {
-            this.getKeyElement(key).classList.add('hide')
-        })
+        this.hiddenKeys = this.hiddenKeys.concat(keyArray)
+
+        this.#set(KeyboardElement.layouts[this.layout][this.base])
+    }
+    setKeyLayout(layout = this.layout, base = this.base){
+        this.layout = layout
+        this.base = base
+
+        this.#set(KeyboardElement.layouts[layout][base])
     }
 }
