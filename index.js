@@ -1,4 +1,3 @@
-import EventRegister from './src/js/util/eventRegister.js'
 import './src/js/elements/index.js'
 import { loaded } from './src/js/loaded.js'
 import { init } from './src/js/init.js'

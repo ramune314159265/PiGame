@@ -1,4 +1,4 @@
-export default class EventRegister {
+export class EventRegister {
     #events = {}
 
     on(name, func) {

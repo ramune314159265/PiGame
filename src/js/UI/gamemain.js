@@ -1,4 +1,4 @@
-import EventRegister from '../util/eventRegister.js'
+import { EventRegister } from '../util/eventRegister.js'
 
 export default class GameMainUI extends EventRegister {
     constructor() {
