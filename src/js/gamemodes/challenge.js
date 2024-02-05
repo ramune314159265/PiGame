@@ -20,7 +20,7 @@ export default class ChallengeMode extends PIGameBase {
     keyPressed(key) {
         switch (key) {
             case 'Backspace':
-                this.backSpace()
+                this.backSpacePressed()
                 break
 
             case 'Enter':
@@ -40,7 +40,7 @@ export default class ChallengeMode extends PIGameBase {
             this.timerStart()
         }
     }
-    backSpace() {
+    backSpacePressed() {
         if (this.digit <= 0) {
             return
         }
