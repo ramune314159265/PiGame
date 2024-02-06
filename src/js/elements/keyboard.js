@@ -35,7 +35,7 @@ export default class KeyboardElement extends HTMLElement {
         })
     }
     connectedCallback() {
-        this.#set(KeyboardElement.layouts[this.getAttribute('layout') ?? this.layout][this.getAttribute('base') ?? this.base])
+        this.#set()
 
         this.#keyDownEventHandle = e => {
             if (e.target.tagName === 'INPUT') {
