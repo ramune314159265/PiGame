@@ -171,7 +171,6 @@ body {
 }
 
 .UItop {
-    background: var(--background-primary);
     display: flex;
     flex-direction: column;
     justify-content: center;
