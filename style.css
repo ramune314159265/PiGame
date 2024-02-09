@@ -216,7 +216,7 @@ button.gameMode {
 }
 
 .selector {
-    width: 50%;
+    width: 100%;
     min-width: 250px;
 }
 
@@ -369,9 +369,6 @@ input.nowDigit {
     }
     .title{
         width: 80%;
-    }
-    .selector {
-        width: 100%;
     }
 }
 
