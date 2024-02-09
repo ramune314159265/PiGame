@@ -237,7 +237,7 @@ select#sequenceSelector {
 }
 
 .symbol {
-    height: 200px;
+    height: 160px;
     display: flex;
     font-size: 5rem;
     pointer-events: none;
