@@ -364,6 +364,9 @@ input.nowDigit {
         grid-template-rows: unset;
         grid-template-columns: 1fr 1fr;
     }
+    .UItop {
+        background: var(--background-primary);
+    }
     .title{
         width: 80%;
     }
