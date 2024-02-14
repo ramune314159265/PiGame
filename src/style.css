@@ -170,23 +170,19 @@ body {
 	-webkit-touch-callout: none;
 }
 
-.UItop {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
+.UItop,
 .UIbottom {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	display: contents;
 }
 
 .main {
 	height: 100%;
-	display: grid;
-	grid-template-rows: 1fr 1fr;
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	gap: 24px;
 }
 
 .title {
@@ -199,6 +195,8 @@ body {
 }
 
 .menu {
+	width: 50%;
+	min-width: 250px;
 	display: flex;
 	flex-direction: column;
 }
@@ -211,8 +209,7 @@ body {
 }
 
 button.gameMode {
-	width: 50%;
-	min-width: 250px;
+	width: 100%;
 	height: 4rem;
 	font-size: 16px;
 }
@@ -363,13 +360,30 @@ input.nowDigit {
 /* 幅740px以上、高さ512px以下 */
 @media screen and (max-height: 512px)and (min-width: 740px) {
 	.main {
+		display: grid;
 		grid-template-rows: unset;
 		grid-template-columns: 1fr 1fr;
+		padding: unset;
 	}
+
 	.UItop {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 		background: var(--background-primary);
 	}
-	.title{
+
+	.UIbottom {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.title {
 		width: 80%;
 	}
 }
