@@ -19,7 +19,7 @@ export default class StatusElement extends HTMLElement {
 				}
 			}))
 		})
-		this.showHintButtonElement.addEventListener('click', e => {
+		this.showHintButtonElement.addEventListener('click', () => {
 			this.dispatchEvent(new CustomEvent('hintClicked', {}))
 		})
 	}

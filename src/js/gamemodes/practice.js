@@ -10,7 +10,7 @@ export default class PracticeMode extends PIGameBase {
 			this.UI.status.addEventListener('digitChanged', e => {
 				this.initDigit(e.detail.digit)
 			})
-			this.UI.status.addEventListener('hintClicked', e => {
+			this.UI.status.addEventListener('hintClicked', () => {
 				this.showHint()
 			})
 		})
