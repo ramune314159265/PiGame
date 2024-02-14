@@ -37,13 +37,17 @@
 			</div>
 		</template>
 		<template id="gameMainUI">
-			<div class="sessionHeader">
-				<button type="button" class="letterButton back">閉じる</button>
-				<div class="sessionTitle"></div>
+			<div class="UItop">
+				<div class="sessionHeader">
+					<button type="button" class="letterButton back">閉じる</button>
+					<div class="sessionTitle"></div>
+				</div>
+				<numeric-output class="outputField"></numeric-output>
 			</div>
-			<numeric-output class="outputField"></numeric-output>
-			<game-status class="status"></game-status>
-			<numeric-keyboard class="keyboard"></numeric-keyboard>
+			<div class="UIbottom">
+				<game-status class="status"></game-status>
+				<numeric-keyboard class="keyboard"></numeric-keyboard>
+			</div>
 		</template>
 		<template id="output">
 			<span class="prefix"></span><span class="output"></span><span class="complement"></span>
@@ -160,7 +164,8 @@
 
 	<script src="index.js" type="module"></script>
 	<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="preload" as="style"
+		onload="this.onload=null;this.rel='stylesheet'">
 </body>
 
 </html>
