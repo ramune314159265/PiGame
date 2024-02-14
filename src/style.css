@@ -1,0 +1,391 @@
+*,
+*:before,
+*:after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	color: var(--text-color);
+	stroke: var(--text-color);
+	-webkit-tap-highlight-color: #00000000;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: var(--background-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--darkgrey);
+	border-radius: var(--border-radius);
+}
+
+::-webkit-scrollbar-corner {
+	background-color: var(--background-secondary);
+}
+
+::placeholder {
+	user-select: none;
+}
+
+:root {
+	overflow: hidden;
+	overscroll-behavior: none;
+	--border-radius: 8px;
+	--black: #000000;
+	--white: #ffffff;
+	--gray: gray;
+	--lightgray: #aaaaaa;
+	--green: #58b058;
+	--blue: #5395ee;
+	--red: #df3939;
+	--green-highlight: #58b0587c;
+	--blue-highlight: #5395ee7c;
+	--red-highlight: #df39397c;
+	--light-background-primary: #ffffff;
+	--light-background-secondary: #f4f4f4;
+	--light-accent-color: #58b058;
+	--light-background-color: #3a3a3a74;
+	--light-text-color: black;
+	--light-text-opposite-color: white;
+	--light-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+	--dark-background-primary: #161616;
+	--dark-background-secondary: #2a2a2a;
+	--dark-accent-color: #005a2c;
+	--dark-background-color: #000000b0;
+	--dark-text-color: white;
+	--dark-text-opposite-color: black;
+	--dark-shadow: rgba(14, 30, 37, 0.12) 0px 4px 6px -1px, rgba(14, 30, 37, 0.32) 0px 2px 4px -1px;
+}
+
+[data-theme="light"] {
+	--background-primary: var(--light-background-primary);
+	--background-secondary: var(--light-background-secondary);
+	--accent-color: var(--light-accent-color);
+	--background-color: var(--light-background-color);
+	--text-color: var(--light-text-color);
+	--text-opposite-color: var(--light-text-opposite-color);
+	--shadow: var(--light-shadow);
+}
+
+[data-theme="dark"] {
+	--background-primary: var(--dark-background-secondary);
+	--background-secondary: var(--dark-background-primary);
+	--accent-color: var(--dark-accent-color);
+	--background-color: var(--dark-background-color);
+	--text-color: var(--dark-text-color);
+	--text-opposite-color: var(--dark-text-opposite-color);
+	--shadow: var(--dark-shadow);
+}
+
+button {
+	font-family: inherit;
+	cursor: pointer;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+button.button {
+	background: var(--background-primary);
+	box-shadow: var(--shadow);
+	border: none;
+	border-radius: var(--border-radius);
+	transition: filter 0.2s, background-color 0.1s;
+}
+
+button.button.hover:not([disabled]) {
+	outline: none;
+	filter: brightness(0.8);
+}
+
+button.button:active:not([disabled]),
+button.button.active:not([disabled]) {
+	filter: brightness(0.6);
+}
+
+button.button[disabled] {
+	filter: contrast(0.5);
+	cursor: not-allowed;
+}
+
+button.correctHint {
+	background: var(--green-highlight);
+}
+
+button.correct:active,
+button.correct.active {
+	background: var(--green);
+}
+
+button.incorrect.active {
+	background: var(--red);
+}
+
+button.key.hide {
+	visibility: hidden;
+}
+
+button.letterButton {
+	font-size: 16px;
+	background: none;
+	border: none;
+	transition: 0.2s filter;
+}
+
+button.letterButton:active {
+	filter: grayscale(1);
+}
+
+button.hasSvgIcon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.svgIcon {
+	height: 100%;
+	aspect-ratio: 1/1;
+	background: var(--text-color);
+	cursor: pointer;
+	mask-repeat: no-repeat;
+	pointer-events: none;
+}
+
+select {
+	cursor: pointer;
+}
+
+body {
+	width: 100dvw;
+	height: 100dvh;
+	background: var(--background-secondary);
+	overflow: hidden;
+	overscroll-behavior: none;
+	font-family: 'Noto Sans JP', sans-serif;
+	touch-action: pan-y;
+	touch-callout: none;
+	-webkit-touch-callout: none;
+}
+
+.UItop {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.UIbottom {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.main {
+	height: 100%;
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+}
+
+.title {
+	width: 50%;
+	min-width: 250px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 24px;
+}
+
+.menu {
+	display: flex;
+	flex-direction: column;
+}
+
+.gameModeButtons {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	align-items: center;
+}
+
+button.gameMode {
+	width: 50%;
+	min-width: 250px;
+	height: 4rem;
+	font-size: 16px;
+}
+
+.selector {
+	width: 100%;
+	min-width: 250px;
+}
+
+select {
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+select#sequenceSelector {
+	width: 100%;
+	padding: 16px;
+	font-size: 16px;
+	text-align: center;
+	background: var(--background-primary);
+	border-radius: var(--border-radius);
+	border: none;
+	box-shadow: var(--shadow);
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.symbol {
+	height: 160px;
+	display: flex;
+	font-size: 5rem;
+	pointer-events: none;
+	align-items: center;
+}
+
+.symbol mjx-container[jax="CHTML"] {
+	margin: 0 !important;
+}
+
+.gameMain {
+	width: 100%;
+	height: 100%;
+	padding: 0px 12px 12px 12px;
+	display: grid;
+	grid-auto-rows: 3rem 2fr 3rem 1fr;
+	justify-items: center;
+	gap: 8px;
+	background: var(--background-secondary);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.sessionHeader {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.sessionTitle {
+	flex-grow: 1;
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+button.back {
+	color: var(--blue);
+}
+
+numeric-output {
+	width: 100%;
+	font-size: 32px;
+	flex-grow: 1;
+	overflow-y: auto;
+	overflow-wrap: break-word;
+}
+
+.complement {
+	color: var(--lightgray);
+}
+
+numeric-keyboard {
+	width: 100%;
+	height: 350px;
+	max-width: 500px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	gap: 8px;
+}
+
+button.key {
+	font-size: 24px;
+}
+
+game-status {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.statuses {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 20px;
+}
+
+.buttons {
+	height: 100%;
+}
+
+.digitStatus {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.timerStatus {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+input.nowDigit {
+	width: 6rem;
+	height: 100%;
+	padding: 8px;
+	font-size: inherit;
+	box-shadow: var(--shadow);
+	border: none;
+	border-radius: var(--border-radius);
+}
+
+.button.statusBarButton {
+	height: 100%;
+	padding: 8px;
+	aspect-ratio: 8 / 5;
+}
+
+/* 幅740px以上、高さ512px以下 */
+@media screen and (max-height: 512px)and (min-width: 740px) {
+	.main {
+		grid-template-rows: unset;
+		grid-template-columns: 1fr 1fr;
+	}
+	.UItop {
+		background: var(--background-primary);
+	}
+	.title{
+		width: 80%;
+	}
+}
+
+@media not (hover:none) {
+	button.button:hover:not([disabled]) {
+		outline: none;
+		filter: brightness(0.8);
+	}
+
+	button.incorrect:active {
+		background: var(--red);
+	}
+
+	button.button:focus-visible {
+		outline: none;
+		filter: brightness(0.8);
+	}
+}

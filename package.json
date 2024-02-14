@@ -4,6 +4,11 @@
     "fix": "eslint src --fix"
   },
   "devDependencies": {
+    "@chialab/esbuild-plugin-html": "^0.18.0",
+    "esbuild": "^0.20.0",
     "eslint": "^8.56.0"
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0"
   }
 }
