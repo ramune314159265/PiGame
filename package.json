@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "fix": "eslint src --fix"
   },
   "devDependencies": {
     "eslint": "^8.56.0"

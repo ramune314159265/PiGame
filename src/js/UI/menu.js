@@ -19,7 +19,7 @@ export default class MainMenu {
 			optionElement.textContent = sequence.name
 
 			selector.appendChild(optionElement)
-		});
+		})
 
 		const sequenceSelected = () => {
 			const index = selector.value
