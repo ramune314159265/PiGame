@@ -183,7 +183,7 @@ numeric-output {
 
 numeric-keyboard {
 	width: 100%;
-	height: 350px;
+	height: 100%;
 	max-width: 500px;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -282,7 +282,7 @@ select#sequenceSelector {
 	height: 100%;
 	padding: 0px 12px 12px 12px;
 	display: grid;
-	grid-auto-rows: 3rem 2fr 3rem 1fr;
+	grid-auto-rows: 3rem 2fr 3rem min(max(300px,40%),400px);
 	justify-items: center;
 	gap: 8px;
 	background: var(--background-secondary);
