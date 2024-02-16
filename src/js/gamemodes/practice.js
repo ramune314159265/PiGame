@@ -29,7 +29,7 @@ export default class PracticeMode extends PIGameBase {
 		this.UI.status.enableHintButton()
 		this.UI.status.setNowDigitLength(this.digit)
 
-		this.UI.output.setOutput(this.numericalSequence.slice(0, digit))
+		this.UI.output.setOutput(this.sequenceData.numericalSequence.slice(0, digit))
 
 		clearTimeout(this.correctHintTimerId)
 		this.correctHintTimerId = setTimeout(() => this.showHint(), 5000)

@@ -3,11 +3,13 @@ import GameMainUI from '../UI/gamemain.js'
 export default class PIGameBase {
 	constructor(option) {
 		this.UI = new GameMainUI()
-		this.numericalSequence = option.numericalSequence
-		this.sequenceName = option.sequenceName
-		this.sequencePrefix = option.sequencePrefix
-		this.sequenceBase = option.sequenceBase
-		this.sequenceTex = option.sequenceTex
+		this.sequenceData = {
+			numericalSequence: option.numericalSequence,
+			name: option.sequenceName,
+			prefix: option.sequencePrefix,
+			base: option.sequenceBase,
+			tex: option.sequenceTex
+		}
 		this.digit = 0
 	}
 	async show() {
@@ -15,10 +17,10 @@ export default class PIGameBase {
 			this.hide()
 		})
 		this.UI.on('showed', () => {
-			this.UI.keyboard.setKeyLayout({ base: this.sequenceBase })
-			this.UI.status.setDigitLength(this.numericalSequence.length)
-			this.UI.output.setPrefix(this.sequencePrefix)
-			this.UI.setTitle({ name: this.sequenceName, tex: this.sequenceTex })
+			this.UI.keyboard.setKeyLayout({ base: this.sequenceData.base })
+			this.UI.status.setDigitLength(this.sequenceData.numericalSequence.length)
+			this.UI.output.setPrefix(this.sequenceData.prefix)
+			this.UI.setTitle({ name: this.sequenceData.name, tex: this.sequenceData.tex })
 			this.UI.keyboard.addEventListener('keyboardPressed', e => {
 				switch (e.detail.key) {
 					case 'Backspace':
@@ -47,6 +49,6 @@ export default class PIGameBase {
 		this.UI.component.remove()
 	}
 	getDigitNumber(digit = this.digit) {
-		return this.numericalSequence[digit]
+		return this.sequenceData.numericalSequence[digit]
 	}
 }
