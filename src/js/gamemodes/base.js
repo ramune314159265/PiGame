@@ -7,6 +7,7 @@ export default class PIGameBase {
 		this.sequenceName = option.sequenceName
 		this.sequencePrefix = option.sequencePrefix
 		this.sequenceBase = option.sequenceBase
+		this.sequenceTex = option.sequenceTex
 		this.digit = 0
 	}
 	async show() {
@@ -17,7 +18,7 @@ export default class PIGameBase {
 			this.UI.keyboard.setKeyLayout(undefined, this.sequenceBase)
 			this.UI.status.setDigitLength(this.numericalSequence.length)
 			this.UI.output.setPrefix(this.sequencePrefix)
-			this.UI.setTitle(this.sequenceName)
+			this.UI.setTitle({ name: this.sequenceName, tex: this.sequenceTex })
 			this.UI.keyboard.addEventListener('keyboardPressed', e => {
 				switch (e.detail.key) {
 					case 'Backspace':
