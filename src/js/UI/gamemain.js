@@ -4,7 +4,7 @@ export default class GameMainUI extends EventRegister {
 	constructor() {
 		super()
 		this.component = document.createElement('div')
-		this.component.classList.add('gameMain')
+		this.component.classList.add('gameMainUI')
 		this.component.appendChild(document.querySelector('#gameMainUI').content.cloneNode(true))
 
 		this.output = this.component.querySelector('.outputField')

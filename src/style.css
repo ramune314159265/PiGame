@@ -81,6 +81,18 @@
 	--shadow: var(--dark-shadow);
 }
 
+body {
+	width: 100dvw;
+	height: 100dvh;
+	background: var(--background-secondary);
+	overflow: hidden;
+	overscroll-behavior: none;
+	font-family: 'Noto Sans JP', sans-serif;
+	touch-action: pan-y;
+	touch-callout: none;
+	-webkit-touch-callout: none;
+}
+
 button {
 	font-family: inherit;
 	cursor: pointer;
@@ -94,21 +106,23 @@ button.button {
 	border: none;
 	border-radius: var(--border-radius);
 	transition: filter 0.2s, background-color 0.1s;
-}
 
-button.button.hover:not([disabled]) {
-	outline: none;
-	filter: brightness(0.8);
-}
+	&:not([disabled]) {
+		&.hover {
+			outline: none;
+			filter: brightness(0.8);
+		}
 
-button.button:active:not([disabled]),
-button.button.active:not([disabled]) {
-	filter: brightness(0.6);
-}
+		&:active,
+		&.active {
+			filter: brightness(0.6);
+		}
+	}
 
-button.button[disabled] {
-	filter: contrast(0.5);
-	cursor: not-allowed;
+	&[disabled] {
+		filter: contrast(0.5);
+		cursor: not-allowed;
+	}
 }
 
 button.correctHint {
@@ -124,11 +138,24 @@ button.incorrect.active {
 	background: var(--red);
 }
 
-button.key.hide {
-	visibility: hidden;
+@media not (hover:none) {
+	button.button:hover:not([disabled]) {
+		outline: none;
+		filter: brightness(0.8);
+	}
+
+	button.incorrect:active {
+		background: var(--red);
+	}
+
+	button.button:focus-visible {
+		outline: none;
+		filter: brightness(0.8);
+	}
 }
 
 button.letterButton {
+	color: var(--blue);
 	font-size: 16px;
 	background: none;
 	border: none;
@@ -156,128 +183,7 @@ button.hasSvgIcon {
 
 select {
 	cursor: pointer;
-}
-
-body {
-	width: 100dvw;
-	height: 100dvh;
-	background: var(--background-secondary);
-	overflow: hidden;
-	overscroll-behavior: none;
-	font-family: 'Noto Sans JP', sans-serif;
-	touch-action: pan-y;
-	touch-callout: none;
-	-webkit-touch-callout: none;
-}
-
-.UItop,
-.UIbottom {
-	display: contents;
-}
-
-.main {
-	height: 100%;
-	padding: 24px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: center;
-	gap: 24px;
-}
-
-.title {
-	width: 50%;
-	min-width: 250px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 24px;
-}
-
-.menu {
-	width: 50%;
-	min-width: 250px;
-	display: flex;
-	flex-direction: column;
-}
-
-.gameModeButtons {
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
-	align-items: center;
-}
-
-button.gameMode {
-	width: 100%;
-	height: 4rem;
-	font-size: 16px;
-}
-
-.selector {
-	width: 100%;
-	min-width: 250px;
-}
-
-select {
-	font-family: 'Noto Sans JP', sans-serif;
-}
-
-select#sequenceSelector {
-	width: 100%;
-	padding: 16px;
-	font-size: 16px;
-	text-align: center;
-	background: var(--background-primary);
-	border-radius: var(--border-radius);
-	border: none;
-	box-shadow: var(--shadow);
-	-webkit-user-select: none;
-	user-select: none;
-}
-
-.symbol {
-	height: 160px;
-	display: flex;
-	font-size: 5rem;
-	pointer-events: none;
-	align-items: center;
-}
-
-.symbol mjx-container[jax="CHTML"] {
-	margin: 0 !important;
-}
-
-.gameMain {
-	width: 100%;
-	height: 100%;
-	padding: 0px 12px 12px 12px;
-	display: grid;
-	grid-auto-rows: 3rem 2fr 3rem 1fr;
-	justify-items: center;
-	gap: 8px;
-	background: var(--background-secondary);
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.sessionHeader {
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.sessionTitle {
-	flex-grow: 1;
-	font-size: 20px;
-	display: flex;
-	justify-content: center;
-}
-
-button.back {
-	color: var(--blue);
+	font-family: inherit;
 }
 
 numeric-output {
@@ -286,24 +192,28 @@ numeric-output {
 	flex-grow: 1;
 	overflow-y: auto;
 	overflow-wrap: break-word;
-}
 
-.complement {
-	color: var(--lightgray);
+	.complement {
+		color: var(--lightgray);
+	}
 }
 
 numeric-keyboard {
 	width: 100%;
-	height: 350px;
+	height: 100%;
 	max-width: 500px;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(4, 1fr);
 	gap: 8px;
-}
 
-button.key {
-	font-size: 24px;
+	button.key {
+		font-size: 24px;
+	}
+
+	button.key.hide {
+		visibility: hidden;
+	}
 }
 
 game-status {
@@ -314,120 +224,229 @@ game-status {
 	justify-content: space-between;
 	-webkit-user-select: none;
 	user-select: none;
-}
 
-.statuses {
-	height: 100%;
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	font-size: 20px;
-}
-
-.buttons {
-	height: 100%;
-}
-
-.digitStatus {
-	height: 100%;
-	display: flex;
-	align-items: center;
-	gap: 4px;
-}
-
-.timerStatus {
-	height: 100%;
-	display: flex;
-	align-items: center;
-}
-
-input.nowDigit {
-	width: 6rem;
-	height: 100%;
-	padding: 8px;
-	font-size: inherit;
-	box-shadow: var(--shadow);
-	border: none;
-	border-radius: var(--border-radius);
-}
-
-.button.statusBarButton {
-	height: 100%;
-	padding: 8px;
-	aspect-ratio: 8 / 5;
-}
-
-/* 幅740px以上、高さ512px以下 */
-@media screen and (max-height: 512px)and (min-width: 740px) {
-	.main {
-		display: grid;
-		grid-template-rows: unset;
-		grid-template-columns: 1fr 1fr;
-		padding: unset;
-		gap: 0;
-	}
-
-	.main>.UItop {
+	.statuses {
 		height: 100%;
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
 		align-items: center;
-		background: var(--background-primary);
+		gap: 8px;
+		font-size: 20px;
 	}
 
-	.main>.UIbottom {
+	.digitStatus {
 		height: 100%;
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
 		align-items: center;
+		gap: 4px;
+	}
+
+	input.nowDigit {
+		width: 6rem;
+		height: 100%;
+		padding: 8px;
+		font-size: inherit;
+		box-shadow: var(--shadow);
+		border: none;
+		border-radius: var(--border-radius);
+	}
+
+	.timerStatus {
+		height: 100%;
+		display: flex;
+		align-items: center;
+	}
+
+	.buttons {
+		height: 100%;
+	}
+
+	.button.statusBarButton {
+		height: 100%;
+		padding: 8px;
+		aspect-ratio: 8 / 5;
+	}
+}
+
+.mainUI {
+	height: 100%;
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	gap: 24px;
+
+	@media not screen and (max-height: 512px)and (min-width: 740px) {
+		.UItop,
+		.UIbottom {
+			display: contents;
+		}
+	}
+
+	@media screen and (max-height: 512px)and (min-width: 740px) {
+		& {
+			display: grid;
+			grid-template-rows: unset;
+			grid-template-columns: 1fr 1fr;
+			padding: unset;
+			gap: 0;
+		}
+
+		& .UItop {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			background: var(--background-primary);
+
+		}
+
+		& .UIbottom {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		& .title {
+			width: 80%;
+		}
 	}
 
 	.title {
-		width: 80%;
+		width: 50%;
+		min-width: 250px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 24px;
 	}
 
-	.gameMain {
-		padding: 0;
-		grid-template-rows: 1fr;
-		grid-template-columns: 1fr 1fr;
-		gap: 0;
+	.symbol {
+		height: 160px;
+		display: flex;
+		font-size: 5rem;
+		pointer-events: none;
+		align-items: center;
+
+		mjx-container[jax="CHTML"] {
+			margin: 0 !important;
+		}
 	}
 
-	.gameMain>.UItop {
+	.selector {
 		width: 100%;
-		height: 100%;
-		display: grid;
-		grid-template-rows: 3rem 1fr;
+		min-width: 250px;
+	}
+
+	select#sequenceSelector {
+		width: 100%;
+		padding: 16px;
+		font-size: 16px;
+		text-align: center;
 		background: var(--background-primary);
+		border-radius: var(--border-radius);
+		border: none;
+		box-shadow: var(--shadow);
+		-webkit-user-select: none;
+		user-select: none;
 	}
 
-	.gameMain>.UIbottom {
+	.menu {
+		width: 50%;
+		min-width: 250px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.gameModeButtons {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		align-items: center;
+	}
+
+	button.gameMode {
 		width: 100%;
-		height: 100%;
-		display: grid;
-		grid-template-rows: 3rem 1fr;
-		gap: 8px;
-	}
-
-	numeric-keyboard {
-		height: 100%;
+		height: 4rem;
+		font-size: 16px;
 	}
 }
 
-@media not (hover:none) {
-	button.button:hover:not([disabled]) {
-		outline: none;
-		filter: brightness(0.8);
+.gameMainUI {
+	width: 100%;
+	height: 100%;
+	padding: 0px 12px 12px 12px;
+	display: grid;
+	grid-auto-rows: 3rem 2fr 3rem min(max(332px, 40%), 400px);
+	justify-items: center;
+	gap: 8px;
+	background: var(--background-secondary);
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	.sessionHeader {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
-	button.incorrect:active {
-		background: var(--red);
+	.sessionTitle {
+		flex-grow: 1;
+		font-size: 20px;
+		display: flex;
+		justify-content: center;
 	}
 
-	button.button:focus-visible {
-		outline: none;
-		filter: brightness(0.8);
+	@media not screen and (max-height: 512px)and (min-width: 740px) {
+		.UItop,
+		.UIbottom {
+			display: contents;
+		}
+
+		.keyboard{
+			padding-bottom: env(safe-area-inset-bottom, 0px);
+		}
+	}
+
+	@media screen and (max-height: 512px)and (min-width: 740px) {
+		& {
+			padding: 0;
+			grid-template-rows: 1fr;
+			grid-template-columns: 1fr 1fr;
+			gap: 0;
+		}
+
+		& .UItop {
+			width: 100%;
+			height: 100%;
+			display: grid;
+			grid-template-rows: 3rem 1fr;
+			background: var(--background-primary);
+			overflow: hidden;
+		}
+
+		& .UIbottom {
+			width: 100%;
+			height: 100%;
+			padding: 12px;
+			display: grid;
+			justify-items: center;
+			grid-template-rows: 3rem 1fr;
+			gap: 8px;
+		}
+
+		& .sessionHeader {
+			padding: 0px 12px 0px calc(env(safe-area-inset-left, 0px) + 12px);
+			background: var(--background-secondary);
+		}
+
+		& .outputField {
+			padding: 12px 12px 12px env(safe-area-inset-left, 12px);
+		}
 	}
 }
