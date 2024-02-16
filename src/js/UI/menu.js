@@ -1,7 +1,7 @@
 import { MemorizeMode, PracticeMode, ChallengeMode } from '../gamemodes/index.js'
 import { getConfig } from '../util/config.js'
 
-export default class MainMenu {
+export default class MainMenuUI {
 	constructor() {
 		this.component = document.createElement('div')
 		this.component.classList.add('mainUI')

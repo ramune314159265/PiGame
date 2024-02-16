@@ -1,6 +1,6 @@
 import { EventRegister } from '../util/eventRegister.js'
 
-export default class GameMainUI extends EventRegister {
+export default class ResultUI extends EventRegister {
 	constructor() {
 		super()
 		this.component = document.createElement('div')

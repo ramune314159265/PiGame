@@ -1,5 +1,5 @@
-import MainMenu from "./UI/menu.js"
+import MainMenuUI from "./UI/menu.js"
 
 export const loaded = () => {
-	new MainMenu().show()
+	new MainMenuUI().show()
 }
