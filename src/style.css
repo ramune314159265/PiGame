@@ -380,7 +380,7 @@ game-status {
 	height: 100%;
 	padding: 0px 12px 12px 12px;
 	display: grid;
-	grid-auto-rows: 3rem 2fr 3rem min(max(300px, 40%), 400px);
+	grid-auto-rows: 3rem 2fr 3rem min(max(332px, 40%), 400px);
 	justify-items: center;
 	gap: 8px;
 	background: var(--background-secondary);
