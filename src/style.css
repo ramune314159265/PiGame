@@ -118,6 +118,7 @@ button.button {
 			filter: brightness(0.6);
 		}
 	}
+
 	&[disabled] {
 		filter: contrast(0.5);
 		cursor: not-allowed;
@@ -340,21 +341,24 @@ game-status {
 	position: absolute;
 	top: 0;
 	left: 0;
+
+	.sessionHeader {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.sessionTitle {
+		flex-grow: 1;
+		font-size: 20px;
+		display: flex;
+		justify-content: center;
+	}
 }
 
-.sessionHeader {
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
 
-.sessionTitle {
-	flex-grow: 1;
-	font-size: 20px;
-	display: flex;
-	justify-content: center;
-}
+
 
 /* 幅740px以上、高さ512px以下 */
 @media screen and (max-height: 512px)and (min-width: 740px) {
