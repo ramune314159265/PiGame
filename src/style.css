@@ -156,6 +156,7 @@ button.hasSvgIcon {
 
 select {
 	cursor: pointer;
+	font-family: inherit;
 }
 
 body {
@@ -169,6 +170,38 @@ body {
 	touch-callout: none;
 	-webkit-touch-callout: none;
 }
+
+/**/
+
+numeric-output {
+	width: 100%;
+	font-size: 32px;
+	flex-grow: 1;
+	overflow-y: auto;
+	overflow-wrap: break-word;
+}
+
+numeric-keyboard {
+	width: 100%;
+	height: 350px;
+	max-width: 500px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	gap: 8px;
+}
+
+game-status {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+/**/
 
 .UItop,
 .UIbottom {
@@ -217,10 +250,6 @@ button.gameMode {
 .selector {
 	width: 100%;
 	min-width: 250px;
-}
-
-select {
-	font-family: 'Noto Sans JP', sans-serif;
 }
 
 select#sequenceSelector {
@@ -280,41 +309,19 @@ button.back {
 	color: var(--blue);
 }
 
-numeric-output {
-	width: 100%;
-	font-size: 32px;
-	flex-grow: 1;
-	overflow-y: auto;
-	overflow-wrap: break-word;
-}
+
 
 .complement {
 	color: var(--lightgray);
 }
 
-numeric-keyboard {
-	width: 100%;
-	height: 350px;
-	max-width: 500px;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: repeat(4, 1fr);
-	gap: 8px;
-}
+
 
 button.key {
 	font-size: 24px;
 }
 
-game-status {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	-webkit-user-select: none;
-	user-select: none;
-}
+
 
 .statuses {
 	height: 100%;
