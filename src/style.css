@@ -126,6 +126,7 @@ button.incorrect.active {
 }
 
 button.letterButton {
+	color: var(--blue);
 	font-size: 16px;
 	background: none;
 	border: none;
@@ -208,6 +209,47 @@ game-status {
 	justify-content: space-between;
 	-webkit-user-select: none;
 	user-select: none;
+
+	.statuses {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 20px;
+	}
+
+	.digitStatus {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		gap: 4px;
+	}
+
+	input.nowDigit {
+		width: 6rem;
+		height: 100%;
+		padding: 8px;
+		font-size: inherit;
+		box-shadow: var(--shadow);
+		border: none;
+		border-radius: var(--border-radius);
+	}
+
+	.timerStatus {
+		height: 100%;
+		display: flex;
+		align-items: center;
+	}
+
+	.buttons {
+		height: 100%;
+	}
+
+	.button.statusBarButton {
+		height: 100%;
+		padding: 8px;
+		aspect-ratio: 8 / 5;
+	}
 }
 
 /**/
@@ -312,61 +354,6 @@ game-status {
 	font-size: 20px;
 	display: flex;
 	justify-content: center;
-}
-
-button.back {
-	color: var(--blue);
-}
-
-
-
-
-
-
-
-
-
-
-
-.statuses {
-	height: 100%;
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	font-size: 20px;
-}
-
-.buttons {
-	height: 100%;
-}
-
-.digitStatus {
-	height: 100%;
-	display: flex;
-	align-items: center;
-	gap: 4px;
-}
-
-.timerStatus {
-	height: 100%;
-	display: flex;
-	align-items: center;
-}
-
-input.nowDigit {
-	width: 6rem;
-	height: 100%;
-	padding: 8px;
-	font-size: inherit;
-	box-shadow: var(--shadow);
-	border: none;
-	border-radius: var(--border-radius);
-}
-
-.button.statusBarButton {
-	height: 100%;
-	padding: 8px;
-	aspect-ratio: 8 / 5;
 }
 
 /* 幅740px以上、高さ512px以下 */
