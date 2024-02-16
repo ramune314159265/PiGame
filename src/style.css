@@ -94,21 +94,22 @@ button.button {
 	border: none;
 	border-radius: var(--border-radius);
 	transition: filter 0.2s, background-color 0.1s;
-}
 
-button.button.hover:not([disabled]) {
-	outline: none;
-	filter: brightness(0.8);
-}
+	&:not([disabled]) {
+		&.hover {
+			outline: none;
+			filter: brightness(0.8);
+		}
 
-button.button:active:not([disabled]),
-button.button.active:not([disabled]) {
-	filter: brightness(0.6);
-}
-
-button.button[disabled] {
-	filter: contrast(0.5);
-	cursor: not-allowed;
+		&:active,
+		&.active {
+			filter: brightness(0.6);
+		}
+	}
+	&[disabled] {
+		filter: contrast(0.5);
+		cursor: not-allowed;
+	}
 }
 
 button.correctHint {
@@ -122,10 +123,6 @@ button.correct.active {
 
 button.incorrect.active {
 	background: var(--red);
-}
-
-button.key.hide {
-	visibility: hidden;
 }
 
 button.letterButton {
@@ -179,6 +176,10 @@ numeric-output {
 	flex-grow: 1;
 	overflow-y: auto;
 	overflow-wrap: break-word;
+
+	.complement {
+		color: var(--lightgray);
+	}
 }
 
 numeric-keyboard {
@@ -189,6 +190,14 @@ numeric-keyboard {
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(4, 1fr);
 	gap: 8px;
+
+	button.key {
+		font-size: 24px;
+	}
+
+	button.key.hide {
+		visibility: hidden;
+	}
 }
 
 game-status {
@@ -311,15 +320,11 @@ button.back {
 
 
 
-.complement {
-	color: var(--lightgray);
-}
 
 
 
-button.key {
-	font-size: 24px;
-}
+
+
 
 
 
