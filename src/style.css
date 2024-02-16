@@ -269,7 +269,7 @@ game-status {
 		display: contents;
 	}
 
-	@media screen and (max-height: 512px)and (min-width: 740px)  {
+	@media screen and (max-height: 512px)and (min-width: 740px) {
 		& {
 			display: grid;
 			grid-template-rows: unset;
@@ -393,7 +393,7 @@ game-status {
 		justify-content: center;
 	}
 
-	@media screen and (max-height: 512px)and (min-width: 740px){
+	@media screen and (max-height: 512px)and (min-width: 740px) {
 		& {
 			padding: 0;
 			grid-template-rows: 1fr;
@@ -413,7 +413,7 @@ game-status {
 		& .UIbottom {
 			width: 100%;
 			height: 100%;
-			padding: 12px;
+			padding: 12px env(safe-area-inset-right, 12px) 12px 12px;
 			display: grid;
 			justify-items: center;
 			grid-template-rows: 3rem 1fr;
@@ -421,12 +421,12 @@ game-status {
 		}
 
 		& .sessionHeader {
-			padding-inline: 12px;
+			padding-inline: 0px 12px 0px env(safe-area-inset-left, 12px);
 			background: var(--background-secondary);
 		}
 
 		& .outputField {
-			padding: 12px;
+			padding: 12px 12px 12px env(safe-area-inset-left, 12px);
 		}
 	}
 }
