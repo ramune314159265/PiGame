@@ -41,4 +41,7 @@ export default class GameMainUI extends EventRegister {
 
 		this.component.remove()
 	}
+	setTitle(name){
+		this.component.querySelector('.sessionTitle').textContent = name
+	}
 }

@@ -17,6 +17,7 @@ export default class PIGameBase {
 			this.UI.keyboard.setKeyLayout(undefined, this.sequenceBase)
 			this.UI.status.setDigitLength(this.numericalSequence.length)
 			this.UI.output.setPrefix(this.sequencePrefix)
+			this.UI.setTitle(this.sequenceName)
 			this.UI.keyboard.addEventListener('keyboardPressed', e => {
 				switch (e.detail.key) {
 					case 'Backspace':
