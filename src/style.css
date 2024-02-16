@@ -186,8 +186,6 @@ select {
 	font-family: inherit;
 }
 
-/**/
-
 numeric-output {
 	width: 100%;
 	font-size: 32px;
@@ -268,8 +266,6 @@ game-status {
 		aspect-ratio: 8 / 5;
 	}
 }
-
-/**/
 
 .mainUI {
 	height: 100%;
