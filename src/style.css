@@ -255,11 +255,6 @@ game-status {
 
 /**/
 
-.UItop,
-.UIbottom {
-	display: contents;
-}
-
 .mainUI {
 	height: 100%;
 	padding: 24px;
@@ -415,10 +410,6 @@ game-status {
 			display: grid;
 			grid-template-rows: 3rem 1fr;
 			gap: 8px;
-		}
-
-		numeric-keyboard {
-			height: 100%;
 		}
 	}
 }
