@@ -97,10 +97,10 @@ export default class KeyboardElement extends HTMLElement {
 
 		this.#set()
 	}
-	setKeyLayout(layout = this.layout, base = this.base){
-		this.layout = layout
-		this.base = base
+	setKeyLayout({ layout, base }) {
+		this.layout = layout ?? this.layout
+		this.base = base ?? this.base
 
-		this.#set(KeyboardElement.layouts[layout][base])
+		this.#set(KeyboardElement.layouts[this.layout][this.base])
 	}
 }

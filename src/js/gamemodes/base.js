@@ -15,7 +15,7 @@ export default class PIGameBase {
 			this.hide()
 		})
 		this.UI.on('showed', () => {
-			this.UI.keyboard.setKeyLayout(undefined, this.sequenceBase)
+			this.UI.keyboard.setKeyLayout({ base: this.sequenceBase })
 			this.UI.status.setDigitLength(this.numericalSequence.length)
 			this.UI.output.setPrefix(this.sequencePrefix)
 			this.UI.setTitle({ name: this.sequenceName, tex: this.sequenceTex })
