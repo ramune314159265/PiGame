@@ -276,9 +276,11 @@ game-status {
 	align-items: center;
 	gap: 24px;
 
-	.UItop,
-	.UIbottom {
-		display: contents;
+	@media not screen and (max-height: 512px)and (min-width: 740px) {
+		.UItop,
+		.UIbottom {
+			display: contents;
+		}
 	}
 
 	@media screen and (max-height: 512px)and (min-width: 740px) {
@@ -386,11 +388,6 @@ game-status {
 	top: 0;
 	left: 0;
 
-	.UItop,
-	.UIbottom {
-		display: contents;
-	}
-
 	.sessionHeader {
 		width: 100%;
 		display: flex;
@@ -403,6 +400,17 @@ game-status {
 		font-size: 20px;
 		display: flex;
 		justify-content: center;
+	}
+
+	@media not screen and (max-height: 512px)and (min-width: 740px) {
+		.UItop,
+		.UIbottom {
+			display: contents;
+		}
+
+		.keyboard{
+			padding-bottom: env(safe-area-inset-bottom, 0px);
+		}
 	}
 
 	@media screen and (max-height: 512px)and (min-width: 740px) {
