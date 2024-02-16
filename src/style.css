@@ -267,6 +267,10 @@ game-status {
 	}
 }
 
+math-tex {
+	pointer-events: none;
+}
+
 .mainUI {
 	height: 100%;
 	padding: 24px;
@@ -275,45 +279,6 @@ game-status {
 	justify-content: space-around;
 	align-items: center;
 	gap: 24px;
-
-	@media not screen and (max-height: 512px)and (min-width: 740px) {
-		.UItop,
-		.UIbottom {
-			display: contents;
-		}
-	}
-
-	@media screen and (max-height: 512px)and (min-width: 740px) {
-		& {
-			display: grid;
-			grid-template-rows: unset;
-			grid-template-columns: 1fr 1fr;
-			padding: unset;
-			gap: 0;
-		}
-
-		& .UItop {
-			height: 100%;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			background: var(--background-primary);
-
-		}
-
-		& .UIbottom {
-			height: 100%;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-		}
-
-		& .title {
-			width: 80%;
-		}
-	}
 
 	.title {
 		width: 50%;
@@ -328,7 +293,6 @@ game-status {
 		height: 160px;
 		display: flex;
 		font-size: 5rem;
-		pointer-events: none;
 		align-items: center;
 
 		mjx-container[jax="CHTML"] {
@@ -373,6 +337,45 @@ game-status {
 		height: 4rem;
 		font-size: 16px;
 	}
+
+	@media not screen and (max-height: 512px)and (min-width: 740px) {
+		.UItop,
+		.UIbottom {
+			display: contents;
+		}
+	}
+
+	@media screen and (max-height: 512px)and (min-width: 740px) {
+		& {
+			display: grid;
+			grid-template-rows: unset;
+			grid-template-columns: 1fr 1fr;
+			padding: unset;
+			gap: 0;
+		}
+
+		& .UItop {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			background: var(--background-primary);
+
+		}
+
+		& .UIbottom {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		& .title {
+			width: 80%;
+		}
+	}
 }
 
 .gameMainUI {
@@ -402,6 +405,8 @@ game-status {
 		justify-content: center;
 		align-items: center;
 		gap: 8px;
+		-webkit-user-select: none;
+		user-select: none;
 	}
 
 	@media not screen and (max-height: 512px)and (min-width: 740px) {
@@ -410,7 +415,7 @@ game-status {
 			display: contents;
 		}
 
-		.keyboard{
+		.keyboard {
 			padding-bottom: env(safe-area-inset-bottom, 0px);
 		}
 	}
