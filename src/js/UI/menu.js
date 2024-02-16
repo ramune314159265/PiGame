@@ -4,7 +4,7 @@ import { getConfig } from '../util/config.js'
 export default class MainMenu {
 	constructor() {
 		this.component = document.createElement('div')
-		this.component.classList.add('main')
+		this.component.classList.add('mainUI')
 		this.component.appendChild(document.querySelector('#mainMenuUI').content.cloneNode(true))
 	}
 	async show() {
