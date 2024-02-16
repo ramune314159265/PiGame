@@ -407,6 +407,7 @@ game-status {
 			display: grid;
 			grid-template-rows: 3rem 1fr;
 			background: var(--background-primary);
+			overflow: hidden;
 		}
 
 		& .UIbottom {
