@@ -400,6 +400,8 @@ game-status {
 		font-size: 20px;
 		display: flex;
 		justify-content: center;
+		align-items: center;
+		gap: 8px;
 	}
 
 	@media not screen and (max-height: 512px)and (min-width: 740px) {
