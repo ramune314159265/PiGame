@@ -81,6 +81,18 @@
 	--shadow: var(--dark-shadow);
 }
 
+body {
+	width: 100dvw;
+	height: 100dvh;
+	background: var(--background-secondary);
+	overflow: hidden;
+	overscroll-behavior: none;
+	font-family: 'Noto Sans JP', sans-serif;
+	touch-action: pan-y;
+	touch-callout: none;
+	-webkit-touch-callout: none;
+}
+
 button {
 	font-family: inherit;
 	cursor: pointer;
@@ -155,18 +167,6 @@ button.hasSvgIcon {
 select {
 	cursor: pointer;
 	font-family: inherit;
-}
-
-body {
-	width: 100dvw;
-	height: 100dvh;
-	background: var(--background-secondary);
-	overflow: hidden;
-	overscroll-behavior: none;
-	font-family: 'Noto Sans JP', sans-serif;
-	touch-action: pan-y;
-	touch-callout: none;
-	-webkit-touch-callout: none;
 }
 
 /**/
