@@ -269,6 +269,43 @@ game-status {
 	align-items: center;
 	gap: 24px;
 
+	.UItop,
+	.UIbottom {
+		display: contents;
+	}
+
+	@media screen and (max-height: 512px)and (min-width: 740px)  {
+		& {
+			display: grid;
+			grid-template-rows: unset;
+			grid-template-columns: 1fr 1fr;
+			padding: unset;
+			gap: 0;
+		}
+
+		& .UItop {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			background: var(--background-primary);
+
+		}
+
+		& .UIbottom {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		& .title {
+			width: 80%;
+		}
+	}
+
 	.title {
 		width: 50%;
 		min-width: 250px;
@@ -362,34 +399,6 @@ game-status {
 
 /* 幅740px以上、高さ512px以下 */
 @media screen and (max-height: 512px)and (min-width: 740px) {
-	.main {
-		display: grid;
-		grid-template-rows: unset;
-		grid-template-columns: 1fr 1fr;
-		padding: unset;
-		gap: 0;
-	}
-
-	.main>.UItop {
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		background: var(--background-primary);
-	}
-
-	.main>.UIbottom {
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.title {
-		width: 80%;
-	}
 
 	.gameMain {
 		padding: 0;
