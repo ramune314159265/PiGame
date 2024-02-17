@@ -393,20 +393,28 @@ math-tex {
 
 	.sessionHeader {
 		width: 100%;
-		display: flex;
+		display: grid;
+		grid-template-columns: max-content 1fr;
+		gap: 8px;
 		align-items: center;
 		justify-content: center;
 	}
 
 	.sessionTitle {
-		flex-grow: 1;
-		font-size: 20px;
-		display: flex;
+		display: grid;
+		grid-template-columns: max-content min-content;
+		gap: 8px;
 		justify-content: center;
 		align-items: center;
-		gap: 8px;
 		-webkit-user-select: none;
 		user-select: none;
+	}
+
+	.sequenceName{
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		text-align: center;
 	}
 
 	@media not screen and (max-height: 512px)and (min-width: 740px) {
