@@ -290,10 +290,13 @@ math-tex {
 	}
 
 	.symbol {
+		width: 100%;
 		height: 160px;
+		overflow: hidden;
 		display: flex;
 		font-size: 5rem;
 		align-items: center;
+		justify-content: center;
 
 		mjx-container[jax="CHTML"] {
 			margin: 0 !important;
@@ -349,7 +352,7 @@ math-tex {
 		& {
 			display: grid;
 			grid-template-rows: unset;
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: 50% 50%;
 			padding: unset;
 			gap: 0;
 		}
