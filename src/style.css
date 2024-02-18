@@ -405,12 +405,16 @@ math-tex {
 
 	.sessionTitle {
 		display: grid;
-		grid-template-columns: max-content min-content;
+		grid-template-columns: 8rem 1fr;
 		gap: 8px;
 		justify-content: center;
 		align-items: center;
 		-webkit-user-select: none;
 		user-select: none;
+	}
+
+	.sequenceTex {
+		overflow: hidden;
 	}
 
 	.sequenceName{
