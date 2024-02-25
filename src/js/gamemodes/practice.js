@@ -1,4 +1,5 @@
 import PIGameBase from './base.js'
+import PracticeResultUI from '../UI/practiceResult.js'
 
 export default class PracticeMode extends PIGameBase {
 	constructor(option) {
@@ -6,7 +7,7 @@ export default class PracticeMode extends PIGameBase {
 		this.correctHintTimerId = 0
 
 		this.UI.on('showed', () => {
-			this.UI.keyboard.hideKeys(['Backspace', 'Enter'])
+			this.UI.keyboard.hideKeys(['Backspace'])
 			this.UI.status.addEventListener('digitChanged', e => {
 				this.initDigit(e.detail.digit)
 			})
@@ -15,7 +16,24 @@ export default class PracticeMode extends PIGameBase {
 			})
 		})
 	}
-	enterPressed() { }
+	enterPressed() {
+		this.UI.hide()
+
+		const resultOutputElement = document.createElement('numeric-output')
+
+		const resultUI = new PracticeResultUI()
+		resultUI.on('showed', () => {
+			console.log('a')
+			resultOutputElement.setPrefix(this.sequenceData.prefix)
+			resultOutputElement.setOutput(this.sequenceData.numericalSequence.slice(0, this.digit))
+			resultOutputElement.setComplement(this.sequenceData.numericalSequence.slice(this.digit, this.digit + 100))
+		})
+		resultUI.show({
+			inputResultElement: resultOutputElement,
+			digit: this.digit,
+			sequenceData: this.sequenceData
+		})
+	}
 	backSpacePressed() { }
 	numKeyPressed(key) {
 		if (this.getDigitNumber() !== key) {
