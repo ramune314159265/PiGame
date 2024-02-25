@@ -16,9 +16,11 @@ export default class PracticeResultUI extends EventRegister {
 		this.component.querySelector('.UItop').appendChild(inputResultElement)
 		this.component.querySelector('.digitLength').textContent = digit
 		this.component.querySelector('.sequenceName').textContent = sequenceData.name
+
 		const texElement = document.createElement('math-tex')
 		texElement.setTex(sequenceData.tex)
 		this.component.querySelector('.sequenceTex').appendChild(texElement)
+
 		this.emit('showed')
 
 		await this.component.animate(
