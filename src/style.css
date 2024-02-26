@@ -15,16 +15,17 @@
 }
 
 ::-webkit-scrollbar-track {
-	background-color: var(--background-secondary);
+	background-color: var(--background-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: var(--darkgrey);
+	background-color: var(--lightgray);
 	border-radius: var(--border-radius);
 }
 
 ::-webkit-scrollbar-corner {
-	background-color: var(--background-secondary);
+	background-color: var(--lightgray);
+	border-radius: var(--border-radius);
 }
 
 ::placeholder {
