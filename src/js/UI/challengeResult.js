@@ -10,11 +10,14 @@ export default class ChallengeResultUI extends EventRegister {
 	async show({
 		inputResultElement,
 		inputtedContent,
-		sequenceData
+		sequenceData,
+		elapsedTime
 	}) {
 		document.body.appendChild(this.component)
 		this.component.querySelector('.UItop').appendChild(inputResultElement)
 		this.component.querySelector('.sequenceName').textContent = sequenceData.name
+		this.component.querySelector('.minutes').textContent = Math.floor(elapsedTime / 1000 / 60)
+		this.component.querySelector('.seconds').textContent = String(Math.floor(elapsedTime / 1000) % 60).padStart(2, '0')
 
 		const firstIncorrectDigit = inputtedContent
 			.split("")

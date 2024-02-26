@@ -36,7 +36,8 @@ export default class ChallengeMode extends PIGameBase {
 		resultUI.show({
 			inputResultElement: resultOutputElement,
 			inputtedContent: this.inputtedContent,
-			sequenceData: this.sequenceData
+			sequenceData: this.sequenceData,
+			elapsedTime: Date.now() - (this.startTimeStamp ?? Date.now())
 		})
 	}
 	backSpacePressed() {
