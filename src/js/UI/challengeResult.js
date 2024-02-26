@@ -45,7 +45,6 @@ export default class ChallengeResultUI extends EventRegister {
 			const elapsedTime = performance.now() - startTimeStamp
 			const elapsedTimeRate = elapsedTime / digitAnimationDuration
 			const valueChangeRate = 1 - (1 - elapsedTimeRate) ** 3
-			console.log(valueChangeRate)
 			if (elapsedTimeRate > 1) {
 				this.component.querySelector('.digitLength').textContent = firstIncorrectDigit
 				return
