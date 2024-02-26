@@ -39,7 +39,7 @@ export default class ChallengeResultUI extends EventRegister {
 			easing: 'ease-in-out',
 		}).finished
 
-		const digitAnimationDuration = 2000
+		const digitAnimationDuration = 3000
 		const startTimeStamp = performance.now()
 		const frameHandle = () => {
 			const elapsedTime = performance.now() - startTimeStamp
