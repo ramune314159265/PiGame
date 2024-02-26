@@ -39,18 +39,18 @@ export default class ChallengeResultUI extends EventRegister {
 			easing: 'ease-in-out',
 		}).finished
 
-		const digitAnimationDuration = 3000
-		const startTimeStamp = performance.now()
+		const animationDuration = 3000
+		const animationStartTimeStamp = performance.now()
 		const frameHandle = () => {
-			const elapsedTime = performance.now() - startTimeStamp
-			const elapsedTimeRate = elapsedTime / digitAnimationDuration
-			const valueChangeRate = 1 - (1 - elapsedTimeRate) ** 3
-			if (elapsedTimeRate > 1) {
+			const animationElapsedTime = performance.now() - animationStartTimeStamp
+			const animationElapsedTimeRate = animationElapsedTime / animationDuration
+			const animationValueChangeRate = 1 - (1 - animationElapsedTimeRate) ** 3
+			if (animationElapsedTimeRate > 1) {
 				this.component.querySelector('.digitLength').textContent = firstIncorrectDigit
 				return
 			}
 
-			this.component.querySelector('.digitLength').textContent = Math.round(firstIncorrectDigit * valueChangeRate)
+			this.component.querySelector('.digitLength').textContent = Math.round(firstIncorrectDigit * animationValueChangeRate)
 			requestAnimationFrame(frameHandle)
 		}
 		requestAnimationFrame(frameHandle)
