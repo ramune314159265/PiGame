@@ -1,4 +1,5 @@
 import PIGameBase from './base.js'
+import ChallengeResultUI from '../UI/challengeResult.js'
 
 export default class ChallengeMode extends PIGameBase {
 	constructor(option) {
@@ -20,7 +21,24 @@ export default class ChallengeMode extends PIGameBase {
 			this.timerStart()
 		}
 	}
-	enterPressed() { }
+	enterPressed() {
+		this.UI.hide()
+
+		const resultOutputElement = document.createElement('sequence-diff')
+
+		const resultUI = new ChallengeResultUI()
+		resultUI.on('showed', () => {
+			resultOutputElement.setOutput({
+				inputtedSequence: this.inputtedContent,
+				sequenceData: this.sequenceData,
+			})
+		})
+		resultUI.show({
+			inputResultElement: resultOutputElement,
+			inputtedContent: this.inputtedContent,
+			sequenceData: this.sequenceData
+		})
+	}
 	backSpacePressed() {
 		if (this.digit <= 0) {
 			return

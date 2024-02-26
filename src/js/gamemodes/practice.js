@@ -23,7 +23,6 @@ export default class PracticeMode extends PIGameBase {
 
 		const resultUI = new PracticeResultUI()
 		resultUI.on('showed', () => {
-			console.log('a')
 			resultOutputElement.setPrefix(this.sequenceData.prefix)
 			resultOutputElement.setOutput(this.sequenceData.numericalSequence.slice(0, this.digit))
 			resultOutputElement.setComplement(this.sequenceData.numericalSequence.slice(this.digit, this.digit + 100))
