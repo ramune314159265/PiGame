@@ -6,6 +6,7 @@ export default class ChallengeMode extends PIGameBase {
 		super(option)
 		this.inputtedContent = ''
 		this.startTimeStamp = 0
+		this.lastPressedTimeStamp = 0
 
 		this.UI.on('showed', () => {
 			this.UI.status.disableDigitInput()
@@ -20,6 +21,7 @@ export default class ChallengeMode extends PIGameBase {
 		if (this.startTimeStamp === 0) {
 			this.timerStart()
 		}
+		this.lastPressedTimeStamp = Date.now()
 	}
 	enterPressed() {
 		this.UI.hide()
@@ -37,7 +39,7 @@ export default class ChallengeMode extends PIGameBase {
 			inputResultElement: resultOutputElement,
 			inputtedContent: this.inputtedContent,
 			sequenceData: this.sequenceData,
-			elapsedTime: Date.now() - (this.startTimeStamp ?? Date.now())
+			elapsedTime: this.lastPressedTimeStamp - (this.startTimeStamp ?? Date.now())
 		})
 	}
 	backSpacePressed() {
@@ -47,6 +49,7 @@ export default class ChallengeMode extends PIGameBase {
 		this.inputtedContent = this.inputtedContent.slice(0, this.inputtedContent.length - 1)
 		this.digit--
 		this.initDigit()
+		this.lastPressedTimeStamp = Date.now()
 	}
 	initDigit(digit = this.digit) {
 		this.digit = digit
