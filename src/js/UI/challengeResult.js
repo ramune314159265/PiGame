@@ -38,8 +38,7 @@ export default class ChallengeResultUI extends EventRegister {
 		openChallengeModeButton.textContent = '練習モードを開く(途中から)'
 		openChallengeModeButton.addEventListener('click', () => {
 			this.hide()
-			console.log({ ...sequenceData })
-			new PracticeMode({ ...sequenceData }, firstIncorrectDigit).show()
+			new PracticeMode(sequenceData, firstIncorrectDigit).show()
 		})
 		this.component.querySelector('.buttons').appendChild(openChallengeModeButton)
 
