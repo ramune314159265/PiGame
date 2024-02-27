@@ -1,4 +1,5 @@
 import { EventRegister } from '../util/eventRegister.js'
+import { PracticeMode } from '../gamemodes/index.js'
 
 export default class ChallengeResultUI extends EventRegister {
 	constructor() {
@@ -16,6 +17,9 @@ export default class ChallengeResultUI extends EventRegister {
 		document.body.appendChild(this.component)
 		this.component.querySelector('.UItop').appendChild(inputResultElement)
 		this.component.querySelector('.sequenceName').textContent = sequenceData.name
+		const texElement = document.createElement('math-tex')
+		texElement.setTex(sequenceData.tex)
+		this.component.querySelector('.sequenceTex').appendChild(texElement)
 		this.component.querySelector('.minutes').textContent = Math.floor(elapsedTime / 1000 / 60)
 		this.component.querySelector('.seconds').textContent = String(Math.floor(elapsedTime / 1000) % 60).padStart(2, '0')
 
@@ -28,9 +32,16 @@ export default class ChallengeResultUI extends EventRegister {
 				}
 			})
 			.filter(data => !data.isCorrect)[0]?.digit ?? inputtedContent.length
-		const texElement = document.createElement('math-tex')
-		texElement.setTex(sequenceData.tex)
-		this.component.querySelector('.sequenceTex').appendChild(texElement)
+		const openChallengeModeButton = document.createElement('button')
+		openChallengeModeButton.type = 'button'
+		openChallengeModeButton.classList.add('button')
+		openChallengeModeButton.textContent = '練習モードを開く(途中から)'
+		openChallengeModeButton.addEventListener('click', () => {
+			this.hide()
+			console.log({ ...sequenceData })
+			new PracticeMode({ ...sequenceData }, firstIncorrectDigit).show()
+		})
+		this.component.querySelector('.buttons').appendChild(openChallengeModeButton)
 
 		this.emit('showed')
 		await this.component.animate(

@@ -512,6 +512,11 @@ sequence-diff {
 	top: 0;
 	left: 0;
 
+	button.button {
+		font-size: 16px;
+		padding: 16px;
+	}
+
 	.UItop,
 	.UIbottom {
 		overflow: hidden;
