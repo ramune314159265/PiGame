@@ -2,8 +2,9 @@ import PIGameBase from './base.js'
 import PracticeResultUI from '../UI/practiceResult.js'
 
 export default class PracticeMode extends PIGameBase {
-	constructor(option) {
+	constructor(option, digit = 0) {
 		super(option)
+		this.digit = digit
 		this.correctHintTimerId = 0
 
 		this.UI.on('showed', () => {

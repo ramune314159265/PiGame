@@ -1,8 +1,9 @@
 import PIGameBase from './base.js'
 
 export default class MemorizeMode extends PIGameBase {
-	constructor(option) {
+	constructor(option, digit = 0) {
 		super(option)
+		this.digit = digit
 
 		this.UI.on('showed', () => {
 			this.UI.keyboard.hideKeys(['Backspace', 'Enter'])
