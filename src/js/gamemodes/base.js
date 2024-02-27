@@ -5,10 +5,10 @@ export default class PIGameBase {
 		this.UI = new GameMainUI()
 		this.sequenceData = {
 			numericalSequence: option.numericalSequence,
-			name: option.sequenceName,
-			prefix: option.sequencePrefix,
-			base: option.sequenceBase,
-			tex: option.sequenceTex
+			name: option.name,
+			prefix: option.prefix,
+			base: option.base,
+			tex: option.tex
 		}
 		this.digit = 0
 	}

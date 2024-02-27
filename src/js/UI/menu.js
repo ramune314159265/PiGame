@@ -34,10 +34,10 @@ export default class MainMenuUI {
 		const gameStart = (GameMode, option = getConfig().mathSequences[selector.value]) => {
 			new GameMode({
 				numericalSequence: option.sequence,
-				sequenceName: option.name,
-				sequencePrefix: option.prefix,
-				sequenceBase: option.base,
-				sequenceTex: option.tex
+				name: option.name,
+				prefix: option.prefix,
+				base: option.base,
+				tex: option.tex
 			}).show()
 		}
 		this.component.querySelector('#memorizeMode').addEventListener('click', () => {
