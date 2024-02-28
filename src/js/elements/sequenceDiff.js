@@ -11,21 +11,21 @@ export default class SequenceDiffElement extends HTMLElement {
 		this.#set()
 	}
 	setOutput({
-		inputtedSequence,
+		inputtedContent,
 		sequenceData
 	}) {
-		this.inputtedSequenceElement.textContent = sequenceData.prefix + inputtedSequence
-		const correctSequenceToShow = sequenceData.numericalSequence.slice(0, inputtedSequence.length + 100)
+		this.inputtedSequenceElement.textContent = sequenceData.prefix + inputtedContent
+		const correctSequenceToShow = sequenceData.numericalSequence.slice(0, inputtedContent.length + 100)
 
 		const digitStatuses = correctSequenceToShow.split('').map((digitContent, index) => {
 			switch (true) {
-				case digitContent === inputtedSequence[index]:
+				case digitContent === inputtedContent[index]:
 					return 'correct'
 
-				case inputtedSequence[index] === undefined:
+				case inputtedContent[index] === undefined:
 					return 'notInputted'
 
-				case digitContent !== inputtedSequence[index]:
+				case digitContent !== inputtedContent[index]:
 					return 'incorrect'
 
 				default:

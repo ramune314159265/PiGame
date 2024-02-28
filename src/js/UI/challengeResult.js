@@ -9,14 +9,17 @@ export default class ChallengeResultUI extends EventRegister {
 		this.component.appendChild(document.querySelector('#challengeResultUI').content.cloneNode(true))
 	}
 	async show({
-		inputResultElement,
 		inputtedContent,
 		sequenceData,
 		elapsedTime
 	}) {
 		document.body.appendChild(this.component)
-		this.component.querySelector('.UItop').appendChild(inputResultElement)
 		this.component.querySelector('.sequenceName').textContent = sequenceData.name
+		const output = this.component.querySelector('.outputField')
+		output.setOutput({
+			inputtedContent,
+			sequenceData
+		})
 		const texElement = document.createElement('math-tex')
 		texElement.setTex(sequenceData.tex)
 		this.component.querySelector('.sequenceTex').appendChild(texElement)

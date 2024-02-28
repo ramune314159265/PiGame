@@ -26,17 +26,8 @@ export default class ChallengeMode extends PIGameBase {
 	enterPressed() {
 		this.UI.hide()
 
-		const resultOutputElement = document.createElement('sequence-diff')
-
 		const resultUI = new ChallengeResultUI()
-		resultUI.on('showed', () => {
-			resultOutputElement.setOutput({
-				inputtedSequence: this.inputtedContent,
-				sequenceData: this.sequenceData,
-			})
-		})
 		resultUI.show({
-			inputResultElement: resultOutputElement,
 			inputtedContent: this.inputtedContent,
 			sequenceData: this.sequenceData,
 			elapsedTime: this.lastPressedTimeStamp - (this.startTimeStamp ?? Date.now())

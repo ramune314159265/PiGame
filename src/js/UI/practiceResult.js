@@ -9,12 +9,14 @@ export default class PracticeResultUI extends EventRegister {
 		this.component.appendChild(document.querySelector('#practiceResultUI').content.cloneNode(true))
 	}
 	async show({
-		inputResultElement,
 		digit,
 		sequenceData
 	}) {
 		document.body.appendChild(this.component)
-		this.component.querySelector('.UItop').appendChild(inputResultElement)
+		const output = this.component.querySelector('.outputField')
+		output.setPrefix(sequenceData.prefix)
+		output.setOutput(sequenceData.numericalSequence.slice(0, digit))
+		output.setComplement(sequenceData.numericalSequence.slice(digit, digit + 100))
 		this.component.querySelector('.digitLength').textContent = digit
 		this.component.querySelector('.sequenceName').textContent = sequenceData.name
 		this.component.querySelector('.openChallengeMode').addEventListener('click', () => {
