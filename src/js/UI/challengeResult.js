@@ -6,7 +6,7 @@ export default class ChallengeResultUI extends EventRegister {
 		super()
 		this.component = document.createElement('div')
 		this.component.classList.add('resultUI')
-		this.component.appendChild(document.querySelector('#resultUI').content.cloneNode(true))
+		this.component.appendChild(document.querySelector('#challengeResultUI').content.cloneNode(true))
 	}
 	async show({
 		inputResultElement,
@@ -32,15 +32,10 @@ export default class ChallengeResultUI extends EventRegister {
 				}
 			})
 			.filter(data => !data.isCorrect)[0]?.digit ?? inputtedContent.length
-		const openChallengeModeButton = document.createElement('button')
-		openChallengeModeButton.type = 'button'
-		openChallengeModeButton.classList.add('button')
-		openChallengeModeButton.textContent = '練習モードを開く(途中から)'
-		openChallengeModeButton.addEventListener('click', () => {
+		this.component.querySelector('.openPracticeMode').addEventListener('click', () => {
 			this.hide()
 			new PracticeMode(sequenceData, firstIncorrectDigit).show()
 		})
-		this.component.querySelector('.buttons').appendChild(openChallengeModeButton)
 
 		this.emit('showed')
 		await this.component.animate(

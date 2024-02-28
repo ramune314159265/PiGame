@@ -6,7 +6,7 @@ export default class PracticeResultUI extends EventRegister {
 		super()
 		this.component = document.createElement('div')
 		this.component.classList.add('resultUI')
-		this.component.appendChild(document.querySelector('#resultUI').content.cloneNode(true))
+		this.component.appendChild(document.querySelector('#practiceResultUI').content.cloneNode(true))
 	}
 	async show({
 		inputResultElement,
@@ -17,15 +17,10 @@ export default class PracticeResultUI extends EventRegister {
 		this.component.querySelector('.UItop').appendChild(inputResultElement)
 		this.component.querySelector('.digitLength').textContent = digit
 		this.component.querySelector('.sequenceName').textContent = sequenceData.name
-		const openChallengeModeButton = document.createElement('button')
-		openChallengeModeButton.type = 'button'
-		openChallengeModeButton.classList.add('button')
-		openChallengeModeButton.textContent = '挑戦モードを開く'
-		openChallengeModeButton.addEventListener('click',()=>{
+		this.component.querySelector('.openChallengeMode').addEventListener('click', () => {
 			this.hide()
 			new ChallengeMode(sequenceData).show()
 		})
-		this.component.querySelector('.buttons').appendChild(openChallengeModeButton)
 
 		const texElement = document.createElement('math-tex')
 		texElement.setTex(sequenceData.tex)

@@ -52,7 +52,28 @@
 				<numeric-keyboard class="keyboard"></numeric-keyboard>
 			</div>
 		</template>
-		<template id="resultUI">
+		<template id="practiceResultUI">
+			<div class="UItop">
+				<div class="sessionHeader">
+					<button type="button" class="letterButton back">閉じる</button>
+					<div class="sessionTitle">
+						<math-tex class="sequenceTex"></math-tex>
+						<span class="sequenceName"></span>
+					</div>
+				</div>
+			</div>
+			<div class="UIbottom">
+				<div class="digitResult">
+					<span>結果は</span>
+					<span class="digitLength"></span>
+					<span>桁でした</span>
+				</div>
+				<div class="buttons">
+					<button class="button openChallengeMode">挑戦モードを開く</button>
+				</div>
+			</div>
+		</template>
+		<template id="challengeResultUI">
 			<div class="UItop">
 				<div class="sessionHeader">
 					<button type="button" class="letterButton back">閉じる</button>
@@ -72,7 +93,9 @@
 					<span>経過時間:</span>
 					<span class="minutes">--</span><span>:</span><span class="seconds">--</span>
 				</div>
-				<div class="buttons"></div>
+				<div class="buttons">
+					<button class="button openPracticeMode">練習モードを開く(途中から)</button>
+				</div>
 			</div>
 		</template>
 		<template id="output">
