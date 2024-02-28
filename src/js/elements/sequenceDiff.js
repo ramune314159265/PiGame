@@ -14,33 +14,26 @@ export default class SequenceDiffElement extends HTMLElement {
 		inputtedContent,
 		sequenceData
 	}) {
-		this.inputtedSequenceElement.textContent = sequenceData.prefix + inputtedContent
-		const correctSequenceToShow = sequenceData.numericalSequence.slice(0, inputtedContent.length + 100)
+		const isCorrectDigitArray = inputtedContent
+			.split('')
+			.map((digitContent, index) => digitContent === sequenceData.numericalSequence[index])
 
-		const digitStatuses = correctSequenceToShow.split('').map((digitContent, index) => {
-			switch (true) {
-				case digitContent === inputtedContent[index]:
-					return 'correct'
+		this.inputtedSequenceElement.textContent = sequenceData.prefix
 
-				case inputtedContent[index] === undefined:
-					return 'notInputted'
-
-				case digitContent !== inputtedContent[index]:
-					return 'incorrect'
-
-				default:
-					break
-			}
-			digitContent === correctSequenceToShow[index]
-		})
-
-		this.correctSequenceElement.textContent = sequenceData.prefix
-
-		digitStatuses.forEach((digitStatus, index) => {
+		isCorrectDigitArray.forEach((isCorrect, index) => {
 			const element = document.createElement('span')
-			element.textContent = correctSequenceToShow[index]
-			element.classList.add(digitStatus)
-			this.correctSequenceElement.appendChild(element)
+			element.textContent = inputtedContent[index]
+			element.classList.add(isCorrect ? 'correct' : 'incorrect')
+			this.inputtedSequenceElement.appendChild(element)
 		})
+
+		const correctSequenceElement = document.createElement('span')
+		correctSequenceElement.textContent = sequenceData.prefix + sequenceData.numericalSequence.slice(0, inputtedContent.length)
+
+		const correctSequenceComplementElement = document.createElement('span')
+		correctSequenceComplementElement.textContent = sequenceData.numericalSequence.slice(inputtedContent.length, inputtedContent.length + 100)
+		correctSequenceComplementElement.classList.add('notInputted')
+
+		this.correctSequenceElement.append(correctSequenceElement, correctSequenceComplementElement)
 	}
 }
