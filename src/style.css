@@ -573,4 +573,35 @@ sequence-diff {
 	.digitLength {
 		font-size: 48px;
 	}
+
+	@media screen and (max-height: 512px)and (min-width: 740px) {
+		& {
+			padding: 0;
+			grid-template-rows: 1fr;
+			grid-template-columns: 70% 30%;
+			gap: 0;
+		}
+
+		& .UItop {
+			width: 100%;
+			height: 100%;
+			display: grid;
+			grid-template-rows: 3rem 1fr;
+			background: var(--background-primary);
+			overflow: hidden;
+		}
+
+		& .UIbottom {
+			justify-content: space-evenly;
+		}
+
+		& .sessionHeader {
+			padding: 0px 12px 0px calc(env(safe-area-inset-left, 0px) + 12px);
+			background: var(--background-secondary);
+		}
+
+		& .outputField {
+			padding: 12px;
+		}
+	}
 }
